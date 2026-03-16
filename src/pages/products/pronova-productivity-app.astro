@@ -1,0 +1,58 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+
+const features = [
+  { icon: '✅', title: 'Smart Task Management', desc: 'Capture, organize, and prioritize tasks with intelligent workflows.' },
+  { icon: '⏱️', title: 'Focus Timer (Pomodoro+)', desc: 'Built-in focus sessions with customizable work/break intervals.' },
+  { icon: '📅', title: 'Calendar Integration', desc: 'Sync with Google Calendar and Outlook to see your full schedule.' },
+  { icon: '🌍', title: 'Time Zone Support', desc: 'Work across multiple time zones without ever missing a meeting.' },
+  { icon: '📊', title: 'Productivity Analytics', desc: 'See where your time goes and optimize your work patterns.' },
+  { icon: '🔗', title: 'Team Collaboration', desc: 'Share projects and tasks with remote teammates seamlessly.' },
+];
+---
+
+<BaseLayout
+  title="Pronova Productivity App | Pronova Designs"
+  description="The Pronova Productivity App — built for digital nomads and remote teams. Stay focused, organized, and productive from anywhere in the world."
+>
+  <section class="section pt-32 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl pointer-events-none" />
+    <div class="container max-w-4xl mx-auto">
+      <a href="/products/" class="text-brand-muted text-sm hover:text-brand-accent transition-colors inline-flex items-center gap-1 mb-8">← All Products</a>
+      <span class="badge mb-4">Productivity App · Coming Soon</span>
+      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6">
+        Built for the <span class="gradient-text">Location-Independent Professional</span>
+      </h1>
+      <p class="text-brand-muted text-lg leading-relaxed max-w-2xl mb-8">
+        Pronova's productivity app is purpose-built for digital nomads and remote teams —
+        helping you stay organized, focused, and at your best no matter where you are in the world.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/contact/" class="btn-primary">Join the Waitlist</a>
+        <a href="/blog/" class="btn-secondary">Read the Blog</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {features.map((f) => (
+          <div class="card">
+            <div class="text-3xl mb-3">{f.icon}</div>
+            <h3 class="font-semibold text-lg font-heading mb-2">{f.title}</h3>
+            <p class="text-brand-muted text-sm leading-relaxed">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Be the First to Know"
+    subheading="Join the waitlist and get early access when we launch."
+    primaryCTA={{ label: 'Join the Waitlist', href: '/contact/' }}
+    secondaryCTA={{ label: 'Read Our Blog', href: '/blog/' }}
+  />
+</BaseLayout>

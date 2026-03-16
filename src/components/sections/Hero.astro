@@ -1,0 +1,89 @@
+---
+interface Props {
+  badge?: string;
+  heading: string;
+  headingHighlight?: string; // portion of heading to gradient
+  subheading: string;
+  primaryCTA?: { label: string; href: string };
+  secondaryCTA?: { label: string; href: string };
+  showStats?: boolean;
+}
+
+const {
+  badge,
+  heading,
+  headingHighlight,
+  subheading,
+  primaryCTA = { label: 'Get a Free Consultation', href: '/contact/' },
+  secondaryCTA = { label: 'View Our Work', href: '/portfolio/' },
+  showStats = true,
+} = Astro.props;
+
+// Split heading around highlight text
+const before = headingHighlight ? heading.split(headingHighlight)[0] : heading;
+const after  = headingHighlight ? heading.split(headingHighlight)[1] ?? '' : '';
+
+const stats = [
+  { value: '10+', label: 'Years in Business' },
+  { value: '50+', label: 'Projects Delivered' },
+  { value: '30+', label: 'Happy Clients' },
+];
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background glow effects -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div class="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-brand-accent/10 rounded-full blur-3xl" />
+    <div class="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] bg-brand-highlight/10 rounded-full blur-3xl" />
+    <!-- Grid overlay -->
+    <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(79,110,247,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(79,110,247,0.3) 1px, transparent 1px); background-size: 60px 60px;" />
+  </div>
+
+  <div class="container max-w-7xl mx-auto px-4 md:px-8 py-32 text-center relative z-10">
+    {badge && (
+      <div class="inline-flex mb-6 animate-fade-in">
+        <span class="badge text-sm">{badge}</span>
+      </div>
+    )}
+
+    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight mb-6 animate-slide-up">
+      {before}
+      {headingHighlight && <span class="gradient-text">{headingHighlight}</span>}
+      {after}
+    </h1>
+
+    <p class="text-brand-muted text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-in">
+      {subheading}
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in">
+      <a href={primaryCTA.href} class="btn-primary text-base px-8 py-3.5">
+        {primaryCTA.label}
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
+      <a href={secondaryCTA.href} class="btn-secondary text-base px-8 py-3.5">
+        {secondaryCTA.label}
+      </a>
+    </div>
+
+    {showStats && (
+      <div class="mt-20 grid grid-cols-3 gap-6 max-w-lg mx-auto">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <p class="text-3xl md:text-4xl font-bold gradient-text">{stat.value}</p>
+            <p class="text-brand-muted text-xs md:text-sm mt-1">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-brand-muted" aria-hidden="true">
+    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m19 9-7 7-7-7" />
+    </svg>
+  </div>
+</section>

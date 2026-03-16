@@ -1,0 +1,61 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+
+const offerings = [
+  { icon: '🗺️', title: 'Digital Strategy', desc: 'Comprehensive digital roadmaps aligned with your business goals and market position.' },
+  { icon: '🔧', title: 'Tech Stack Selection', desc: 'Expert guidance on the right technologies — React, Next.js, Node.js, GraphQL, MongoDB, and more.' },
+  { icon: '🚀', title: 'Product Roadmapping', desc: 'From MVP to market — phased development plans that minimize risk and maximize learning.' },
+  { icon: '💡', title: 'Innovation Workshops', desc: 'Facilitated sessions to surface opportunities, validate ideas, and align your team.' },
+  { icon: '📐', title: 'Architecture Review', desc: 'Audit your existing systems and receive a clear plan for modernization and scaling.' },
+  { icon: '🤝', title: 'Fractional CTO', desc: 'On-demand technical leadership for startups and businesses without an in-house CTO.' },
+];
+
+const techStack = ['React', 'React Native', 'Next.js', 'Node.js', 'Express.js', 'Apollo Server', 'GraphQL', 'MongoDB'];
+---
+
+<BaseLayout
+  title="Innovation Consulting | Pronova Designs"
+  description="Strategic digital consulting from Pronova Designs — tech stack guidance, product roadmapping, architecture reviews, and fractional CTO services."
+>
+  <section class="section pt-32 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-96 h-96 bg-brand-highlight/10 rounded-full blur-3xl pointer-events-none" />
+    <div class="container max-w-4xl mx-auto">
+      <a href="/services/" class="text-brand-muted text-sm hover:text-brand-accent transition-colors inline-flex items-center gap-1 mb-8">← All Services</a>
+      <span class="badge mb-4">Innovation Consulting</span>
+      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6">
+        Strategic Guidance for Your <span class="gradient-text">Digital Future</span>
+      </h1>
+      <p class="text-brand-muted text-lg leading-relaxed max-w-2xl mb-8">
+        We provide leading digital consulting services — from web and mobile development strategy
+        to data analytics and digital marketing — all customized to meet your unique business needs.
+      </p>
+      <a href="/contact/" class="btn-primary">Book a Strategy Session</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {offerings.map((o) => (
+          <div class="card">
+            <div class="text-3xl mb-3">{o.icon}</div>
+            <h3 class="font-semibold text-lg font-heading mb-2">{o.title}</h3>
+            <p class="text-brand-muted text-sm leading-relaxed">{o.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="card text-center max-w-2xl mx-auto">
+        <p class="text-brand-muted text-sm uppercase tracking-wider font-semibold mb-4">Recommended Core Tech Stack</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          {techStack.map((t) => (
+            <span class="px-3 py-1.5 rounded-lg bg-brand-primary border border-brand-border text-sm font-medium text-brand-text">{t}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner heading="Let's Map Out Your Digital Strategy" subheading="One conversation can change everything." />
+</BaseLayout>

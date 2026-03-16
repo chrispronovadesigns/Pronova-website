@@ -1,0 +1,74 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+
+const products = [
+  {
+    icon: '📘',
+    title: 'Digital Marketing Playbook',
+    description: 'The complete guide to growing your business online. From SEO fundamentals to advanced paid advertising — everything you need to build a winning digital marketing strategy.',
+    href: '/products/digital-marketing-playbook/',
+    badge: 'Guide',
+    cta: 'Get the Playbook',
+  },
+  {
+    icon: '⚡',
+    title: 'Pronova Productivity App',
+    description: 'Built for digital nomads and remote teams. Stay organized, focused, and productive from anywhere in the world with our purpose-built productivity platform.',
+    href: '/products/pronova-productivity-app/',
+    badge: 'App',
+    cta: 'Learn More',
+  },
+  {
+    icon: '🖥️',
+    title: 'Hosting & Maintenance',
+    description: 'High-performance VPS hosting with proactive maintenance, robust security, and the peace of mind that your website is always fast, secure, and online.',
+    href: '/products/hosting-maintenance/',
+    badge: 'Service',
+    cta: 'View Plans',
+  },
+];
+---
+
+<BaseLayout
+  title="Products | Pronova Designs"
+  description="Explore Pronova Designs' digital products — the Digital Marketing Playbook, Pronova Productivity App, and Hosting & Maintenance packages."
+>
+  <section class="section pt-32">
+    <div class="container">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="badge mb-4">Our Products</span>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-4">
+          Ready-Made Solutions for <span class="gradient-text">Digital Growth</span>
+        </h1>
+        <p class="text-brand-muted text-lg leading-relaxed">
+          Purpose-built products designed to accelerate your digital journey — whether you're
+          a startup, small business, or digital nomad.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {products.map((product) => (
+          <div class="card flex flex-col">
+            <div class="flex items-start justify-between mb-4">
+              <span class="text-4xl">{product.icon}</span>
+              <span class="badge">{product.badge}</span>
+            </div>
+            <h2 class="font-bold text-xl font-heading mb-3">{product.title}</h2>
+            <p class="text-brand-muted text-sm leading-relaxed flex-1 mb-6">{product.description}</p>
+            <a href={product.href} class="btn-primary justify-center text-sm">
+              {product.cta} →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Need Something Custom?"
+    subheading="Our products are great starting points — we can customize or build from scratch for your specific needs."
+    primaryCTA={{ label: 'Talk to Our Team', href: '/contact/' }}
+    secondaryCTA={{ label: 'View Our Services', href: '/services/' }}
+  />
+</BaseLayout>

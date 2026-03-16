@@ -1,0 +1,133 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+
+const team = [
+  {
+    name: 'Chris',
+    role: 'Co-Founder & CEO',
+    bio: 'Visionary leader with a passion for digital innovation. Chris brings strategic insight and technical expertise to every project, ensuring Pronova Designs delivers solutions that create real-world impact.',
+    photo: '/images/team/chris.jpg',
+    href: '/about/chris/',
+  },
+  {
+    name: 'Mig',
+    role: 'Co-Founder & CTO',
+    bio: 'Full-stack architect and creative problem-solver. Mig leads the technical development of all Pronova products and client solutions, championing clean code and cutting-edge frameworks.',
+    photo: '/images/team/mig.jpg',
+    href: '/about/mig/',
+  },
+];
+
+const values = [
+  { icon: '🎯', title: 'Business-First Thinking', desc: 'Every decision is grounded in your real-world goals — not just cool tech.' },
+  { icon: '🤝', title: 'Genuine Partnership', desc: 'We embed ourselves in your success for the long haul, not just the project.' },
+  { icon: '⚡', title: 'Innovation Always', desc: 'We stay on the cutting edge so your products never fall behind.' },
+  { icon: '📐', title: 'Craftsmanship', desc: 'We obsess over the details — design, performance, and code quality.' },
+  { icon: '🌎', title: 'Community Impact', desc: 'Proud to grow local businesses in the Rio Grande Valley and beyond.' },
+  { icon: '🔓', title: 'Transparency', desc: 'No hidden costs, no vague timelines. Just honest communication.' },
+];
+---
+
+<BaseLayout
+  title="About Pronova Designs"
+  description="Learn about the Pronova Designs team — two co-founders from Brownsville, TX building digital products that drive real growth for startups and businesses."
+>
+  <!-- Page Hero -->
+  <section class="relative section pt-32 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl" />
+    </div>
+    <div class="container text-center max-w-3xl mx-auto relative z-10">
+      <span class="badge mb-4">About Us</span>
+      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6">
+        Built by Builders,<br /><span class="gradient-text">for Builders</span>
+      </h1>
+      <p class="text-brand-muted text-lg leading-relaxed">
+        Pronova Designs was founded in 2013 in Brownsville, Texas with a simple mission:
+        help startups and small businesses compete in the digital world with custom-built,
+        results-driven digital products.
+      </p>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="section-sm">
+    <div class="container max-w-4xl mx-auto">
+      <div class="card space-y-4 text-brand-muted leading-relaxed">
+        <p>
+          We started Pronova Designs because we saw a gap — too many talented local businesses
+          were being left behind in the digital revolution, either priced out of quality solutions
+          or stuck with cookie-cutter agencies that didn't understand their goals.
+        </p>
+        <p>
+          Over a decade later, we've helped dozens of companies across Texas and beyond launch
+          apps, grow online, and harness data to make smarter decisions. We're not just a vendor —
+          we're a long-term partner invested in your growth.
+        </p>
+        <p>
+          Our team combines deep technical expertise with a strategic business mindset. We speak
+          both languages — code and commerce — and we use that fluency to build digital products
+          that don't just work, but win.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-16">
+        <span class="badge mb-4">The Team</span>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">Meet the Co-Founders</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        {team.map((member) => (
+          <a href={member.href} class="card-hover group text-center">
+            <div class="w-28 h-28 rounded-full bg-gradient-brand mx-auto mb-4 overflow-hidden flex items-center justify-center">
+              <img
+                src={member.photo}
+                alt={member.name}
+                class="w-full h-full object-cover"
+                onerror={`this.style.display='none';this.nextElementSibling.style.display='flex'`}
+              />
+              <span class="text-white text-3xl font-bold hidden w-full h-full items-center justify-center">
+                {member.name.charAt(0)}
+              </span>
+            </div>
+            <h3 class="font-bold text-xl font-heading group-hover:text-brand-accent transition-colors">{member.name}</h3>
+            <p class="text-brand-accent text-sm font-medium mb-3">{member.role}</p>
+            <p class="text-brand-muted text-sm leading-relaxed">{member.bio}</p>
+            <span class="mt-4 text-brand-accent text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              Read full bio →
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section bg-brand-secondary/50">
+    <div class="container">
+      <div class="text-center mb-16">
+        <span class="badge mb-4">Our Values</span>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">What We Stand For</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {values.map((value) => (
+          <div class="card">
+            <div class="text-3xl mb-3">{value.icon}</div>
+            <h3 class="font-semibold text-lg font-heading mb-2">{value.title}</h3>
+            <p class="text-brand-muted text-sm leading-relaxed">{value.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Let's Build Something Together"
+    subheading="Ready to partner with a team that's genuinely invested in your success?"
+  />
+</BaseLayout>

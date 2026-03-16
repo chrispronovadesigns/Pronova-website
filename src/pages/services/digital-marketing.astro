@@ -1,0 +1,57 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+
+const services = [
+  { icon: '🔍', title: 'SEO', href: '#seo', desc: 'Rank higher and drive organic traffic with technical SEO, content strategy, and link building.' },
+  { icon: '📍', title: 'Local SEO', href: '#local-seo', desc: 'Dominate local search results and Google Maps for your target area.' },
+  { icon: '📋', title: 'SEO Audit', href: '#seo-audit', desc: 'Deep-dive analysis of your current SEO performance with a prioritized action plan.' },
+  { icon: '📱', title: 'Social Media Marketing', href: '#smm', desc: 'Strategic content and community management across all major platforms.' },
+  { icon: '📧', title: 'Email Marketing', href: '#email', desc: 'Automated drip campaigns and newsletters that nurture leads and retain customers.' },
+  { icon: '💸', title: 'Paid Advertising', href: '#paid-ads', desc: 'Google Ads, Meta Ads, and more — ROI-focused campaigns that convert.' },
+  { icon: '🎬', title: 'Video Marketing', href: '#video', desc: 'Engaging video content that tells your brand story and drives action.' },
+];
+---
+
+<BaseLayout
+  title="Digital Marketing Services | Pronova Designs"
+  description="Full-funnel digital marketing — SEO, local SEO, social media, email, paid ads, and video marketing services from Pronova Designs in Brownsville, TX."
+>
+  <section class="section pt-32 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-96 h-96 bg-brand-highlight/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+    <div class="container max-w-4xl mx-auto">
+      <a href="/services/" class="text-brand-muted text-sm hover:text-brand-accent transition-colors inline-flex items-center gap-1 mb-8">← All Services</a>
+      <span class="badge mb-4">Digital Marketing</span>
+      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6">
+        Marketing That <span class="gradient-text">Actually Converts</span>
+      </h1>
+      <p class="text-brand-muted text-lg leading-relaxed max-w-2xl mb-8">
+        Full-funnel digital marketing strategies across SEO, social media, email, paid advertising,
+        and video — designed to grow your audience, generate leads, and drive revenue.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/contact/" class="btn-primary">Get Your Marketing Plan</a>
+        <a href="/products/digital-marketing-playbook/" class="btn-secondary">Get the Playbook</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((s) => (
+          <div class="card" id={s.href.replace('#', '')}>
+            <div class="text-3xl mb-3">{s.icon}</div>
+            <h3 class="font-semibold text-lg font-heading mb-2">{s.title}</h3>
+            <p class="text-brand-muted text-sm leading-relaxed">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Ready to Grow Your Digital Presence?"
+    subheading="Get a free marketing audit and strategy session."
+  />
+</BaseLayout>

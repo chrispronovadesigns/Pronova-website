@@ -1,0 +1,24 @@
+{
+  "siteName": "Pronova Designs",
+  "tagline": "Custom Digital Solutions for Growing Businesses",
+  "contact": {
+    "email": "hello@pronovadesigns.com",
+    "phone": "",
+    "address": "",
+    "city": "Brownsville",
+    "state": "TX"
+  },
+  "social": {
+    "linkedin": "https://www.linkedin.com/company/pronova-designs",
+    "facebook": "https://www.facebook.com/ProNovaDesigns/",
+    "instagram": "",
+    "twitter": "",
+    "youtube": ""
+  },
+  "defaultSeo": {
+    "metaTitle": "Pronova Designs | Custom Digital Solutions",
+    "metaDescription": "Custom digital solutions for startups and growing businesses in Brownsville, TX. App development, websites, digital marketing, UI/UX, data science, and more.",
+    "ogImage": "/images/og-default.png"
+  },
+  "googleAnalyticsId": ""
+}

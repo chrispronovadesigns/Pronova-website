@@ -1,0 +1,22 @@
+{
+  "name": "pronova-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "tinacms dev -c \"astro dev\"",
+    "build": "tinacms build && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "tina": "tinacms dev"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.1",
+    "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/vite": "^4.2.1",
+    "@tinacms/cli": "^2.1.9",
+    "astro": "^6.0.5",
+    "tailwindcss": "^4.2.1",
+    "tinacms": "^3.6.1",
+    "vite": "^7.3.1"
+  }
+}

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogCard from '@/components/ui/BlogCard.astro';
+
+// Will be replaced by TinaCMS queries — placeholder posts for now
+const allPosts: any[] = [];
+
+const categories = ['All', 'Productivity', 'Wellness', 'Mindfulness', 'Tech'];
+---
+
+<BaseLayout
+  title="Digital Nomad Blog | Pronova Designs"
+  description="The Pronova Designs Digital Nomad Blog — insights on productivity, wellness, mindfulness, and tech for location-independent professionals."
+>
+  <section class="section pt-32">
+    <div class="container">
+      <!-- Header -->
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="badge mb-4">Digital Nomad Blog</span>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-4">
+          Live Better. <span class="gradient-text">Work Smarter.</span>
+        </h1>
+        <p class="text-brand-muted text-lg leading-relaxed">
+          Insights on productivity, wellness, mindfulness, and tech for the modern
+          location-independent professional.
+        </p>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
+        {categories.map((cat, i) => (
+          <button
+            class:list={[
+              'px-4 py-1.5 rounded-full text-sm font-medium transition-colors border',
+              i === 0
+                ? 'bg-brand-accent text-white border-brand-accent'
+                : 'border-brand-border text-brand-muted hover:border-brand-accent hover:text-brand-accent',
+            ]}
+            data-category={cat}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- Posts Grid -->
+      {allPosts.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {allPosts.map((post) => (
+            <BlogCard
+              title={post.title}
+              description={post.description}
+              href={`/blog/${post.slug}/`}
+              publishedDate={post.publishedDate}
+              category={post.category}
+              image={post.heroImage}
+              readingTime={post.readingTime}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-24 card max-w-md mx-auto">
+          <p class="text-4xl mb-4">✍️</p>
+          <h2 class="font-semibold font-heading mb-2">Articles Coming Soon</h2>
+          <p class="text-brand-muted text-sm mb-6">
+            We're porting our blog content from WordPress. Check back soon — or
+            subscribe to get notified when we publish.
+          </p>
+          <a href="/contact/" class="btn-primary text-sm justify-center">Get Notified</a>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

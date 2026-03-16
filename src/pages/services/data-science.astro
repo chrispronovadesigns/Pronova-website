@@ -1,0 +1,50 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+
+const offerings = [
+  { icon: '🔄', title: 'Data Extraction & ETL', desc: 'Collect, clean, and transform data from any source into actionable datasets.' },
+  { icon: '🗄️', title: 'Database Development', desc: 'Custom database architecture and management optimized for your data model.' },
+  { icon: '📊', title: 'Dashboards & Reporting', desc: 'Real-time visualizations that put your most important metrics front and center.' },
+  { icon: '🤖', title: 'Machine Learning', desc: 'Predictive models and automation that give your business a competitive edge.' },
+  { icon: '🔍', title: 'Business Intelligence', desc: 'Turn raw data into strategic insights that drive smarter decisions.' },
+  { icon: '📈', title: 'Analytics Integration', desc: 'GA4, Mixpanel, Segment — full analytics stack setup and management.' },
+];
+---
+
+<BaseLayout
+  title="Data Science & Analytics Services | Pronova Designs"
+  description="Custom data science and analytics solutions from Pronova Designs — ETL, dashboards, machine learning, and business intelligence for growing businesses."
+>
+  <section class="section pt-32 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl pointer-events-none" />
+    <div class="container max-w-4xl mx-auto">
+      <a href="/services/" class="text-brand-muted text-sm hover:text-brand-accent transition-colors inline-flex items-center gap-1 mb-8">← All Services</a>
+      <span class="badge mb-4">Data Science & Analytics</span>
+      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6">
+        Turn Your Data Into a <span class="gradient-text">Competitive Advantage</span>
+      </h1>
+      <p class="text-brand-muted text-lg leading-relaxed max-w-2xl mb-8">
+        End-to-end custom data solutions — from extraction and ETL to dashboards and machine
+        learning — that provide actionable insights and drive growth, efficiency, and innovation.
+      </p>
+      <a href="/contact/" class="btn-primary">Talk to a Data Expert</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {offerings.map((o) => (
+          <div class="card">
+            <div class="text-3xl mb-3">{o.icon}</div>
+            <h3 class="font-semibold text-lg font-heading mb-2">{o.title}</h3>
+            <p class="text-brand-muted text-sm leading-relaxed">{o.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner heading="Ready to Unlock Your Data's Potential?" subheading="Start with a free discovery call." />
+</BaseLayout>

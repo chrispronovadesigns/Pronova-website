@@ -1,0 +1,35 @@
+---
+// This will be replaced by TinaCMS dynamic routes.
+// For now this is a placeholder that will 404 gracefully until posts are loaded.
+export async function getStaticPaths() {
+  // TinaCMS will populate this — return empty for now
+  return [];
+}
+
+import BlogLayout from '@/layouts/BlogLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  publishedDate: string;
+  author?: string;
+  category?: string;
+  heroImage?: string;
+  readingTime?: string;
+  content: string;
+}
+
+const { title, description, publishedDate, author, category, heroImage, readingTime } = Astro.props;
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  publishedDate={publishedDate}
+  author={author}
+  category={category}
+  image={heroImage}
+  readingTime={readingTime}
+>
+  <slot />
+</BlogLayout>

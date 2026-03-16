@@ -1,0 +1,83 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  publishedDate: string;
+  author?: string;
+  category?: string;
+  image?: string;
+  readingTime?: string;
+}
+
+const { title, description, publishedDate, author = 'Pronova Designs', category, image, readingTime } = Astro.props;
+
+const formattedDate = new Date(publishedDate).toLocaleDateString('en-US', {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
+
+const categoryColors: Record<string, string> = {
+  Productivity: 'badge',
+  Wellness:     'badge-purple',
+  Mindfulness:  'badge-purple',
+  Tech:         'badge',
+};
+const badgeClass = category ? (categoryColors[category] ?? 'badge') : 'badge';
+---
+
+<BaseLayout title={title} description={description} image={image} type="article" publishedDate={publishedDate} author={author}>
+  <article>
+    <!-- Hero -->
+    {image && (
+      <div class="relative h-72 md:h-96 overflow-hidden">
+        <img src={image} alt={title} class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-primary via-brand-primary/60 to-transparent" />
+      </div>
+    )}
+
+    <div class="container max-w-3xl mx-auto px-4 md:px-8 py-16">
+      <!-- Meta -->
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        {category && <span class={badgeClass}>{category}</span>}
+        <span class="text-brand-muted text-sm">{formattedDate}</span>
+        {readingTime && <span class="text-brand-muted text-sm">· {readingTime}</span>}
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-3xl md:text-5xl font-bold font-heading leading-tight mb-6">
+        {title}
+      </h1>
+
+      <p class="text-brand-muted text-lg mb-8 leading-relaxed">{description}</p>
+
+      <div class="flex items-center gap-3 pb-10 mb-10 border-b border-brand-border">
+        <div class="w-9 h-9 rounded-full bg-gradient-brand flex items-center justify-center text-white font-bold text-sm">
+          {author.charAt(0)}
+        </div>
+        <span class="text-brand-muted text-sm">By <span class="text-brand-text font-medium">{author}</span></span>
+      </div>
+
+      <!-- Content -->
+      <div class="prose prose-invert prose-lg max-w-none
+                  prose-headings:font-heading prose-headings:text-brand-text
+                  prose-p:text-brand-muted prose-p:leading-relaxed
+                  prose-a:text-brand-accent prose-a:no-underline hover:prose-a:underline
+                  prose-strong:text-brand-text
+                  prose-code:text-brand-accent prose-code:bg-brand-surface prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+                  prose-pre:bg-brand-surface prose-pre:border prose-pre:border-brand-border
+                  prose-blockquote:border-brand-accent prose-blockquote:text-brand-muted
+                  prose-li:text-brand-muted
+                  prose-img:rounded-xl prose-img:shadow-card">
+        <slot />
+      </div>
+
+      <!-- Back to blog -->
+      <div class="mt-16 pt-10 border-t border-brand-border">
+        <a href="/blog/" class="btn-secondary text-sm">
+          ← Back to Digital Nomad Blog
+        </a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,56 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+
+const chapters = [
+  'Digital Marketing Foundations', 'SEO Strategy & Keyword Research', 'Local SEO & Google Business Profile',
+  'Social Media Marketing (Organic)', 'Paid Advertising (Google & Meta)', 'Email Marketing & Automation',
+  'Video Marketing & YouTube', 'Content Marketing & Blogging', 'Analytics & Reporting',
+  'Building Your Marketing Stack',
+];
+---
+
+<BaseLayout
+  title="Digital Marketing Playbook | Pronova Designs"
+  description="The complete digital marketing playbook from Pronova Designs — SEO, social media, paid ads, email, and more. Everything you need to grow your business online."
+>
+  <section class="section pt-32 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-96 h-96 bg-brand-highlight/10 rounded-full blur-3xl pointer-events-none" />
+    <div class="container max-w-4xl mx-auto">
+      <a href="/products/" class="text-brand-muted text-sm hover:text-brand-accent transition-colors inline-flex items-center gap-1 mb-8">← All Products</a>
+      <span class="badge mb-4">Digital Product</span>
+      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6">
+        The <span class="gradient-text">Digital Marketing Playbook</span>
+      </h1>
+      <p class="text-brand-muted text-lg leading-relaxed max-w-2xl mb-8">
+        The complete guide to growing your business online. From SEO fundamentals to advanced paid
+        advertising — everything you need to build and execute a winning digital marketing strategy.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/contact/" class="btn-primary">Get the Playbook</a>
+        <a href="/services/digital-marketing/" class="btn-secondary">Hire Us Instead</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container max-w-3xl mx-auto">
+      <h2 class="text-2xl font-bold font-heading mb-8 text-center">What's Inside</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {chapters.map((chapter, i) => (
+          <div class="card flex items-center gap-3">
+            <span class="text-brand-accent font-mono text-sm font-bold shrink-0">{String(i + 1).padStart(2, '0')}</span>
+            <span class="text-brand-text text-sm font-medium">{chapter}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Want Us to Do It For You?"
+    subheading="Our team can implement your full digital marketing strategy."
+    primaryCTA={{ label: 'Talk to Our Team', href: '/contact/' }}
+    secondaryCTA={{ label: 'View Marketing Services', href: '/services/digital-marketing/' }}
+  />
+</BaseLayout>

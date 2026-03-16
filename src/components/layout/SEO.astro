@@ -1,0 +1,70 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalURL?: string;
+  type?: 'website' | 'article';
+  publishedDate?: string;
+  author?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/images/og-default.png',
+  canonicalURL = Astro.url.href,
+  type = 'website',
+  publishedDate,
+  author,
+  noindex = false,
+} = Astro.props;
+
+const siteName = 'Pronova Designs';
+const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
+const absoluteImage = image.startsWith('http') ? image : new URL(image, Astro.site).href;
+---
+
+<!-- Primary Meta -->
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<meta name="author" content={author ?? 'Pronova Designs'} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={absoluteImage} />
+<meta property="og:site_name" content={siteName} />
+{publishedDate && <meta property="article:published_time" content={publishedDate} />}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={absoluteImage} />
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": type === 'article' ? 'Article' : 'Organization',
+  "name": siteName,
+  "url": Astro.site?.href,
+  "logo": new URL('/images/logo.svg', Astro.site).href,
+  "description": description,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Brownsville",
+    "addressRegion": "TX",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://www.facebook.com/ProNovaDesigns/",
+    "https://www.linkedin.com/company/pronova-designs",
+    "https://www.instagram.com/pronovadesigns"
+  ]
+})} />

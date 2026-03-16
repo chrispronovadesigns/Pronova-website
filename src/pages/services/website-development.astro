@@ -1,0 +1,53 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+
+const features = [
+  { icon: '⚡', title: 'Performance-First', desc: 'Core Web Vitals optimized for speed, SEO, and user experience.' },
+  { icon: '📱', title: 'Fully Responsive', desc: 'Pixel-perfect on every screen size — mobile, tablet, and desktop.' },
+  { icon: '🔒', title: 'Security Hardened', desc: 'SSL, secure hosting, regular updates, and vulnerability monitoring.' },
+  { icon: '🔍', title: 'SEO Ready', desc: 'Structured data, meta tags, sitemaps, and clean code from day one.' },
+  { icon: '🎨', title: 'Custom Design', desc: 'Tailored to your brand — not a template slapped with your logo.' },
+  { icon: '📊', title: 'Analytics Integrated', desc: 'GA4, Search Console, and conversion tracking set up from launch.' },
+];
+---
+
+<BaseLayout
+  title="Website Development Services | Pronova Designs"
+  description="Custom, high-performance website development in Brownsville, TX. SEO-ready, fully responsive websites tailored to your brand and business goals."
+>
+  <section class="section pt-32 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl pointer-events-none" />
+    <div class="container max-w-4xl mx-auto">
+      <a href="/services/" class="text-brand-muted text-sm hover:text-brand-accent transition-colors inline-flex items-center gap-1 mb-8">← All Services</a>
+      <span class="badge mb-4">Website Development</span>
+      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6">
+        Websites That <span class="gradient-text">Work as Hard as You Do</span>
+      </h1>
+      <p class="text-brand-muted text-lg leading-relaxed max-w-2xl mb-8">
+        We build high-performance, conversion-focused websites that authentically represent your
+        brand and are engineered to rank, engage, and convert.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/contact/" class="btn-primary">Get a Free Quote</a>
+        <a href="/portfolio/" class="btn-secondary">See Our Websites</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {features.map((f) => (
+          <div class="card">
+            <div class="text-3xl mb-3">{f.icon}</div>
+            <h3 class="font-semibold text-lg font-heading mb-2">{f.title}</h3>
+            <p class="text-brand-muted text-sm leading-relaxed">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner heading="Ready for a Website That Actually Performs?" subheading="Let's build something you're proud of." />
+</BaseLayout>

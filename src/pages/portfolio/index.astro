@@ -1,0 +1,76 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PortfolioCard from '@/components/ui/PortfolioCard.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+
+// These will be replaced with TinaCMS queries
+const projects = [
+  {
+    title: 'popspot Mobile App',
+    description: 'B2B mobile marketing SaaS providing location-specific advertising to drive business traffic. Built with React Native and Node.js.',
+    href: '/portfolio/popspot-mobile-app/',
+    tags: ['React Native', 'Node.js', 'AWS', 'SaaS'],
+    category: 'Mobile App',
+  },
+];
+
+const categories = ['All', 'Mobile App', 'Web App', 'Website', 'Digital Marketing', 'UI/UX'];
+---
+
+<BaseLayout
+  title="Portfolio | Pronova Designs"
+  description="Explore Pronova Designs' portfolio of custom digital solutions — mobile apps, web apps, websites, and digital marketing campaigns."
+>
+  <section class="section pt-32">
+    <div class="container">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="badge mb-4">Our Work</span>
+        <h1 class="text-4xl md:text-5xl font-bold font-heading mb-4">
+          Products We're <span class="gradient-text">Proud Of</span>
+        </h1>
+        <p class="text-brand-muted text-lg">
+          From mobile apps to full marketing ecosystems — every project tells a story of growth.
+        </p>
+      </div>
+
+      <!-- Filter (JS-progressive) -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
+        {categories.map((cat, i) => (
+          <button
+            class:list={[
+              'px-4 py-1.5 rounded-full text-sm font-medium transition-colors border',
+              i === 0
+                ? 'bg-brand-accent text-white border-brand-accent'
+                : 'border-brand-border text-brand-muted hover:border-brand-accent hover:text-brand-accent',
+            ]}
+            data-filter={cat}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- Grid -->
+      {projects.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <PortfolioCard {...project} />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-24 card max-w-md mx-auto">
+          <p class="text-4xl mb-4">🚧</p>
+          <h2 class="font-semibold font-heading mb-2">Portfolio Coming Soon</h2>
+          <p class="text-brand-muted text-sm">We're loading up our case studies. Check back soon!</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Have a Project in Mind?"
+    subheading="Let's add your success story to our portfolio."
+    primaryCTA={{ label: 'Start Your Project', href: '/contact/' }}
+    secondaryCTA={{ label: 'See Our Services', href: '/services/' }}
+  />
+</BaseLayout>
