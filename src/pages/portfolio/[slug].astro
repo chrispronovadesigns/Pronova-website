@@ -1,0 +1,129 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+
+// TinaCMS will populate this once content is added.
+// For now returns empty — pages only exist when portfolio MDX files are present.
+export async function getStaticPaths() {
+  // TODO: replace with TinaCMS query once tina/__generated__ is available:
+  // import { client } from '@/tina/__generated__/client';
+  // const { data } = await client.queries.portfolioConnection();
+  // return data.portfolioConnection.edges?.map(({ node }) => ({
+  //   params: { slug: node._sys.filename },
+  //   props: { post: node },
+  // })) ?? [];
+  return [];
+}
+
+interface Props {
+  title: string;
+  description: string;
+  category?: string;
+  coverImage?: string;
+  clientName?: string;
+  liveUrl?: string;
+  completedDate?: string;
+  tags?: { tag: string }[];
+  seo?: { metaTitle?: string; metaDescription?: string; ogImage?: string };
+}
+
+const {
+  title,
+  description,
+  category,
+  coverImage,
+  clientName,
+  liveUrl,
+  completedDate,
+  tags = [],
+  seo,
+} = Astro.props;
+
+const formattedDate = completedDate
+  ? new Date(completedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })
+  : null;
+---
+
+<BaseLayout
+  title={seo?.metaTitle ?? `${title} | Portfolio | Pronova Designs`}
+  description={seo?.metaDescription ?? description}
+  image={seo?.ogImage ?? coverImage}
+  type="website"
+>
+  <!-- Hero -->
+  {coverImage && (
+    <div class="relative h-72 md:h-[480px] overflow-hidden">
+      <img src={coverImage} alt={title} class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-primary via-brand-primary/50 to-transparent" />
+    </div>
+  )}
+
+  <div class="container max-w-4xl mx-auto px-4 md:px-8 py-16">
+    <a href="/portfolio/" class="text-brand-muted text-sm hover:text-brand-accent transition-colors inline-flex items-center gap-1 mb-8">
+      ← Back to Portfolio
+    </a>
+
+    <div class="flex flex-wrap items-center gap-3 mb-4">
+      {category && <span class="badge">{category}</span>}
+      {formattedDate && <span class="text-brand-muted text-sm">{formattedDate}</span>}
+    </div>
+
+    <h1 class="text-4xl md:text-5xl font-bold font-heading mb-4">{title}</h1>
+    <p class="text-brand-muted text-lg leading-relaxed mb-8">{description}</p>
+
+    <!-- Meta strip -->
+    <div class="card mb-12 flex flex-wrap gap-8">
+      {clientName && (
+        <div>
+          <p class="text-brand-muted text-xs uppercase tracking-wider mb-1">Client</p>
+          <p class="font-medium text-brand-text">{clientName}</p>
+        </div>
+      )}
+      {formattedDate && (
+        <div>
+          <p class="text-brand-muted text-xs uppercase tracking-wider mb-1">Completed</p>
+          <p class="font-medium text-brand-text">{formattedDate}</p>
+        </div>
+      )}
+      {tags.length > 0 && (
+        <div>
+          <p class="text-brand-muted text-xs uppercase tracking-wider mb-2">Tech Stack</p>
+          <div class="flex flex-wrap gap-1.5">
+            {tags.map(({ tag }) => (
+              <span class="px-2 py-0.5 rounded-md text-xs bg-brand-surface text-brand-muted border border-brand-border">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+      {liveUrl && (
+        <div class="ml-auto self-center">
+          <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="btn-primary text-sm py-2 px-4">
+            View Live
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            </svg>
+          </a>
+        </div>
+      )}
+    </div>
+
+    <!-- Case Study Content (from TinaCMS rich-text body) -->
+    <div class="prose prose-lg max-w-none
+                prose-headings:font-heading prose-headings:text-brand-text
+                prose-p:text-brand-muted prose-p:leading-relaxed
+                prose-a:text-brand-accent prose-a:no-underline hover:prose-a:underline
+                prose-strong:text-brand-text
+                prose-img:rounded-xl">
+      <slot />
+    </div>
+  </div>
+
+  <CTABanner
+    heading="Like What You See?"
+    subheading="Let's build something this good for your business."
+    primaryCTA={{ label: 'Start Your Project', href: '/contact/' }}
+    secondaryCTA={{ label: 'View More Work', href: '/portfolio/' }}
+  />
+</BaseLayout>

@@ -1,35 +1,50 @@
 ---
-// This will be replaced by TinaCMS dynamic routes.
-// For now this is a placeholder that will 404 gracefully until posts are loaded.
-export async function getStaticPaths() {
-  // TinaCMS will populate this — return empty for now
-  return [];
-}
-
+/**
+ * Dynamic blog post route.
+ *
+ * Currently reads from Astro content collections (src/content/blog/*.mdx).
+ * When you port WordPress posts into src/content/blog/ as .mdx files,
+ * they will automatically appear here.
+ *
+ * TODO: once tina/__generated__ is available, replace getStaticPaths with:
+ *   import { client } from '@/tina/__generated__/client';
+ *   const posts = await client.queries.postConnection();
+ */
+import { getCollection } from 'astro:content';
 import BlogLayout from '@/layouts/BlogLayout.astro';
 
-interface Props {
-  title: string;
-  description: string;
-  publishedDate: string;
-  author?: string;
-  category?: string;
-  heroImage?: string;
-  readingTime?: string;
-  content: string;
+export async function getStaticPaths() {
+  let posts: any[] = [];
+  try {
+    posts = await getCollection('post');
+  } catch {
+    // Collection doesn't exist yet — return empty until content is added
+    return [];
+  }
+  return posts
+    .filter((p: any) => !p.data.draft)
+    .map((p: any) => ({
+      params: { slug: p.slug },
+      props: { post: p },
+    }));
 }
 
-const { title, description, publishedDate, author, category, heroImage, readingTime } = Astro.props;
+const { post } = Astro.props;
+const { Content } = post ? await post.render() : { Content: null };
 ---
 
-<BlogLayout
-  title={title}
-  description={description}
-  publishedDate={publishedDate}
-  author={author}
-  category={category}
-  image={heroImage}
-  readingTime={readingTime}
->
-  <slot />
-</BlogLayout>
+{post && Content ? (
+  <BlogLayout
+    title={post.data.seo?.metaTitle ?? post.data.title}
+    description={post.data.seo?.metaDescription ?? post.data.description}
+    publishedDate={post.data.publishedDate}
+    author={post.data.author ?? 'Pronova Designs'}
+    category={post.data.category}
+    image={post.data.seo?.ogImage ?? post.data.heroImage}
+    readingTime={post.data.readingTime}
+  >
+    <Content />
+  </BlogLayout>
+) : (
+  <p>Post not found.</p>
+)}

@@ -1,9 +1,16 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogCard from '@/components/ui/BlogCard.astro';
 
-// Will be replaced by TinaCMS queries — placeholder posts for now
-const allPosts: any[] = [];
+let allPosts: any[] = [];
+try {
+  allPosts = (await getCollection('post'))
+    .filter((p: any) => !p.data.draft)
+    .sort((a: any, b: any) => new Date(b.data.publishedDate).getTime() - new Date(a.data.publishedDate).getTime());
+} catch {
+  allPosts = [];
+}
 
 const categories = ['All', 'Productivity', 'Wellness', 'Mindfulness', 'Tech'];
 ---
@@ -14,7 +21,6 @@ const categories = ['All', 'Productivity', 'Wellness', 'Mindfulness', 'Tech'];
 >
   <section class="section pt-32">
     <div class="container">
-      <!-- Header -->
       <div class="text-center max-w-2xl mx-auto mb-12">
         <span class="badge mb-4">Digital Nomad Blog</span>
         <h1 class="text-4xl md:text-5xl font-bold font-heading mb-4">
@@ -27,13 +33,13 @@ const categories = ['All', 'Productivity', 'Wellness', 'Mindfulness', 'Tech'];
       </div>
 
       <!-- Category Filter -->
-      <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-12" id="category-filter">
         {categories.map((cat, i) => (
           <button
             class:list={[
-              'px-4 py-1.5 rounded-full text-sm font-medium transition-colors border',
+              'px-4 py-1.5 rounded-full text-sm font-medium transition-colors border filter-btn',
               i === 0
-                ? 'bg-brand-accent text-white border-brand-accent'
+                ? 'bg-brand-accent text-white border-brand-accent active'
                 : 'border-brand-border text-brand-muted hover:border-brand-accent hover:text-brand-accent',
             ]}
             data-category={cat}
@@ -43,19 +49,20 @@ const categories = ['All', 'Productivity', 'Wellness', 'Mindfulness', 'Tech'];
         ))}
       </div>
 
-      <!-- Posts Grid -->
       {allPosts.length > 0 ? (
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {allPosts.map((post) => (
-            <BlogCard
-              title={post.title}
-              description={post.description}
-              href={`/blog/${post.slug}/`}
-              publishedDate={post.publishedDate}
-              category={post.category}
-              image={post.heroImage}
-              readingTime={post.readingTime}
-            />
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="posts-grid">
+          {allPosts.map((post: any) => (
+            <div data-category={post.data.category ?? 'All'} class="post-card">
+              <BlogCard
+                title={post.data.title}
+                description={post.data.description}
+                href={`/blog/${post.slug}/`}
+                publishedDate={post.data.publishedDate}
+                category={post.data.category}
+                image={post.data.heroImage}
+                readingTime={post.data.readingTime}
+              />
+            </div>
           ))}
         </div>
       ) : (
@@ -63,8 +70,8 @@ const categories = ['All', 'Productivity', 'Wellness', 'Mindfulness', 'Tech'];
           <p class="text-4xl mb-4">✍️</p>
           <h2 class="font-semibold font-heading mb-2">Articles Coming Soon</h2>
           <p class="text-brand-muted text-sm mb-6">
-            We're porting our blog content from WordPress. Check back soon — or
-            subscribe to get notified when we publish.
+            We're porting our blog content from WordPress. Drop your <code class="text-brand-accent">.mdx</code> files into
+            <code class="text-brand-accent">src/content/blog/</code> and they'll appear here automatically.
           </p>
           <a href="/contact/" class="btn-primary text-sm justify-center">Get Notified</a>
         </div>
@@ -72,3 +79,28 @@ const categories = ['All', 'Productivity', 'Wellness', 'Mindfulness', 'Tech'];
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards   = document.querySelectorAll<HTMLElement>('.post-card');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.category ?? 'All';
+
+      buttons.forEach((b) => {
+        const isActive = b === btn;
+        b.classList.toggle('bg-brand-accent',  isActive);
+        b.classList.toggle('text-white',        isActive);
+        b.classList.toggle('border-brand-accent', isActive);
+        b.classList.toggle('text-brand-muted',  !isActive);
+        b.classList.toggle('border-brand-border', !isActive);
+      });
+
+      cards.forEach((card) => {
+        const show = cat === 'All' || card.dataset.category === cat;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>

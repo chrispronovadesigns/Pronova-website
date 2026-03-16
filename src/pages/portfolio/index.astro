@@ -1,20 +1,25 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PortfolioCard from '@/components/ui/PortfolioCard.astro';
 import CTABanner from '@/components/sections/CTABanner.astro';
 
-// These will be replaced with TinaCMS queries
-const projects = [
-  {
-    title: 'popspot Mobile App',
-    description: 'B2B mobile marketing SaaS providing location-specific advertising to drive business traffic. Built with React Native and Node.js.',
-    href: '/portfolio/popspot-mobile-app/',
-    tags: ['React Native', 'Node.js', 'AWS', 'SaaS'],
-    category: 'Mobile App',
-  },
-];
+let projects: any[] = [];
+try {
+  projects = (await getCollection('portfolio'))
+    .sort((a: any, b: any) => {
+      if (a.data.featured && !b.data.featured) return -1;
+      if (!a.data.featured && b.data.featured) return 1;
+      if (a.data.completedDate && b.data.completedDate) {
+        return new Date(b.data.completedDate).getTime() - new Date(a.data.completedDate).getTime();
+      }
+      return 0;
+    });
+} catch {
+  projects = [];
+}
 
-const categories = ['All', 'Mobile App', 'Web App', 'Website', 'Digital Marketing', 'UI/UX'];
+const categories = ['All', 'Mobile App', 'Web App', 'Website', 'Digital Marketing', 'UI/UX', 'Data Science'];
 ---
 
 <BaseLayout
@@ -33,35 +38,46 @@ const categories = ['All', 'Mobile App', 'Web App', 'Website', 'Digital Marketin
         </p>
       </div>
 
-      <!-- Filter (JS-progressive) -->
+      <!-- Category Filter -->
       <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
         {categories.map((cat, i) => (
           <button
             class:list={[
-              'px-4 py-1.5 rounded-full text-sm font-medium transition-colors border',
+              'px-4 py-1.5 rounded-full text-sm font-medium transition-colors border filter-btn',
               i === 0
                 ? 'bg-brand-accent text-white border-brand-accent'
                 : 'border-brand-border text-brand-muted hover:border-brand-accent hover:text-brand-accent',
             ]}
-            data-filter={cat}
+            data-category={cat}
           >
             {cat}
           </button>
         ))}
       </div>
 
-      <!-- Grid -->
       {projects.length > 0 ? (
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <PortfolioCard {...project} />
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+          {projects.map((project: any) => (
+            <div data-category={project.data.category ?? 'All'} class="portfolio-card">
+              <PortfolioCard
+                title={project.data.title}
+                description={project.data.description}
+                href={`/portfolio/${project.slug}/`}
+                image={project.data.coverImage}
+                tags={project.data.tags?.map((t: any) => t.tag)}
+                category={project.data.category}
+              />
+            </div>
           ))}
         </div>
       ) : (
         <div class="text-center py-24 card max-w-md mx-auto">
           <p class="text-4xl mb-4">🚧</p>
           <h2 class="font-semibold font-heading mb-2">Portfolio Coming Soon</h2>
-          <p class="text-brand-muted text-sm">We're loading up our case studies. Check back soon!</p>
+          <p class="text-brand-muted text-sm">
+            Add <code class="text-brand-accent">.mdx</code> files to <code class="text-brand-accent">src/content/portfolio/</code>
+            or manage via TinaCMS and projects will appear here automatically.
+          </p>
         </div>
       )}
     </div>
@@ -74,3 +90,28 @@ const categories = ['All', 'Mobile App', 'Web App', 'Website', 'Digital Marketin
     secondaryCTA={{ label: 'See Our Services', href: '/services/' }}
   />
 </BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards   = document.querySelectorAll<HTMLElement>('.portfolio-card');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.category ?? 'All';
+
+      buttons.forEach((b) => {
+        const isActive = b === btn;
+        b.classList.toggle('bg-brand-accent',    isActive);
+        b.classList.toggle('text-white',          isActive);
+        b.classList.toggle('border-brand-accent', isActive);
+        b.classList.toggle('text-brand-muted',    !isActive);
+        b.classList.toggle('border-brand-border', !isActive);
+      });
+
+      cards.forEach((card) => {
+        const show = cat === 'All' || card.dataset.category === cat;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>

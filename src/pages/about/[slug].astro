@@ -1,0 +1,142 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+
+// Hardcoded team stubs — will be driven by TinaCMS team collection
+// once tina/__generated__ is available. Add new members here as needed.
+export async function getStaticPaths() {
+  // TODO: replace with TinaCMS query:
+  // import { client } from '@/tina/__generated__/client';
+  // const { data } = await client.queries.teamConnection();
+  // return data.teamConnection.edges?.map(({ node }) => ({
+  //   params: { slug: node._sys.filename },
+  //   props: { member: node },
+  // })) ?? [];
+
+  return [
+    {
+      params: { slug: 'chris' },
+      props: {
+        name: 'Chris',
+        role: 'Co-Founder & CEO',
+        shortBio: 'Visionary leader with a passion for digital innovation and business strategy.',
+        photo: '/images/team/chris.jpg',
+        linkedin: 'https://www.linkedin.com/company/pronova-designs',
+        fullBio: `Chris co-founded Pronova Designs in 2013 with a clear mission: help startups and small
+businesses in the Rio Grande Valley and beyond compete in the digital world with
+custom-built, results-driven digital products.
+
+With a background spanning business strategy, digital marketing, and product development,
+Chris brings the "why" to every project — ensuring every technical decision maps back
+to real-world business goals.
+
+Outside of Pronova, Chris is passionate about the digital nomad lifestyle, productivity
+systems, and helping local entrepreneurs unlock their potential.`,
+      },
+    },
+    {
+      params: { slug: 'mig' },
+      props: {
+        name: 'Mig',
+        role: 'Co-Founder & CTO',
+        shortBio: 'Full-stack architect and creative problem-solver driving technical excellence.',
+        photo: '/images/team/mig.jpg',
+        linkedin: 'https://www.linkedin.com/company/pronova-designs',
+        fullBio: `Mig is the technical backbone of Pronova Designs, leading architecture and development
+across all client projects and internal products.
+
+A full-stack engineer at heart, Mig is fluent across the entire modern web stack —
+React, React Native, Node.js, GraphQL, AWS, Firebase, and beyond. He champions clean
+code, thoughtful architecture, and a relentless focus on performance.
+
+Since co-founding Pronova in 2013, Mig has helped dozens of businesses ship products
+they're proud of — from native mobile apps to complex data pipelines and marketing platforms.`,
+      },
+    },
+  ];
+}
+
+interface Props {
+  name: string;
+  role: string;
+  shortBio: string;
+  photo?: string;
+  linkedin?: string;
+  twitter?: string;
+  fullBio: string;
+}
+
+const { name, role, shortBio, photo, linkedin, twitter, fullBio } = Astro.props;
+
+const socialLinks = [
+  linkedin && { label: 'LinkedIn', href: linkedin, icon: `<svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>` },
+  twitter && { label: 'Twitter', href: twitter, icon: `<svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>` },
+].filter(Boolean) as { label: string; href: string; icon: string }[];
+---
+
+<BaseLayout
+  title={`${name} | ${role} | Pronova Designs`}
+  description={shortBio}
+  image={photo}
+>
+  <section class="section pt-32">
+    <div class="container max-w-4xl mx-auto">
+      <a href="/about/" class="text-brand-muted text-sm hover:text-brand-accent transition-colors inline-flex items-center gap-1 mb-10">
+        ← Meet the Team
+      </a>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <!-- Sidebar -->
+        <div class="md:col-span-1">
+          <!-- Photo -->
+          <div class="w-full aspect-square rounded-2xl bg-gradient-brand overflow-hidden mb-6 flex items-center justify-center">
+            {photo ? (
+              <img src={photo} alt={name} class="w-full h-full object-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            ) : null}
+            <span class="text-white text-6xl font-bold hidden w-full h-full items-center justify-center">
+              {name.charAt(0)}
+            </span>
+          </div>
+
+          <h1 class="text-2xl font-bold font-heading mb-1">{name}</h1>
+          <p class="text-brand-accent font-medium text-sm mb-4">{role}</p>
+          <p class="text-brand-muted text-sm leading-relaxed mb-6">{shortBio}</p>
+
+          {socialLinks.length > 0 && (
+            <div class="flex gap-3">
+              {socialLinks.map((s) => (
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  class="p-2 rounded-lg text-brand-muted hover:text-brand-accent hover:bg-brand-surface transition-colors"
+                  set:html={s.icon}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        <!-- Bio -->
+        <div class="md:col-span-2">
+          <span class="badge mb-6">Full Bio</span>
+          <div class="space-y-4">
+            {fullBio.split('\n\n').map((para) => (
+              <p class="text-brand-muted leading-relaxed">{para.trim()}</p>
+            ))}
+          </div>
+
+          <div class="mt-10 pt-8 border-t border-brand-border">
+            <a href="/contact/" class="btn-primary text-sm">Work with {name}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading={`Ready to Work with ${name} and the Pronova Team?`}
+    subheading="Get a free consultation and let's start building."
+  />
+</BaseLayout>
