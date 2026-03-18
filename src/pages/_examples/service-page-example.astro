@@ -1,0 +1,39 @@
+---
+// Example: Service Page with SEO Schema
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/seo/Breadcrumbs.astro';
+import { buildServiceSchema, buildBreadcrumbSchema } from '@/lib/seo/schema';
+
+const serviceSchema = buildServiceSchema({
+  name: 'Mobile App Development',
+  description: 'Custom mobile app development for iOS and Android. We build native and cross-platform apps that solve real business problems.',
+  serviceType: 'Software Development',
+  price: '15000',
+  priceCurrency: 'USD',
+});
+
+const breadcrumbItems = [
+  { name: 'Home', url: '/' },
+  { name: 'Services', url: '/services/' },
+  { name: 'Mobile App Development' },
+];
+---
+
+<BaseLayout
+  title="Mobile App Development"
+  description="Custom mobile app development for iOS and Android. We build native and cross-platform apps that solve real business problems."
+  keywords={['mobile app development', 'iOS development', 'Android development', 'React Native', 'Flutter']}
+  schemas={[serviceSchema]}
+>
+  <div class="section">
+    <div class="container">
+      <Breadcrumbs items={breadcrumbItems} class="mb-8" />
+      
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Mobile App Development
+      </h1>
+      
+      <!-- Your service content here -->
+    </div>
+  </div>
+</BaseLayout>

@@ -1,50 +1,53 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import CTABanner from '@/components/sections/CTABanner.astro';
+import ServiceLayout from '@/layouts/ServiceLayout.astro';
 
 const offerings = [
-  { icon: '🔄', title: 'Data Extraction & ETL', desc: 'Collect, clean, and transform data from any source into actionable datasets.' },
-  { icon: '🗄️', title: 'Database Development', desc: 'Custom database architecture and management optimized for your data model.' },
-  { icon: '📊', title: 'Dashboards & Reporting', desc: 'Real-time visualizations that put your most important metrics front and center.' },
-  { icon: '🤖', title: 'Machine Learning', desc: 'Predictive models and automation that give your business a competitive edge.' },
-  { icon: '🔍', title: 'Business Intelligence', desc: 'Turn raw data into strategic insights that drive smarter decisions.' },
-  { icon: '📈', title: 'Analytics Integration', desc: 'GA4, Mixpanel, Segment — full analytics stack setup and management.' },
+  { title: 'Data extraction and integration', desc: 'We connect your scattered data sources into a unified system. CRMs, marketing platforms, sales tools, financial systems — all feeding into one place.' },
+  { title: 'Automated reporting and dashboards', desc: 'Custom dashboards that show you exactly what matters, updated in real time. No more waiting for someone to pull a report.' },
+  { title: 'Advanced analytics', desc: 'Trend analysis, customer segmentation, predictive modeling, and revenue attribution. We help you see what is coming, not just what already happened.' },
+  { title: 'Machine learning applications', desc: 'When your data is complex enough to benefit from it, we build models that identify patterns and opportunities a human would miss.' },
+  { title: 'Database development and management', desc: 'Proper data architecture that scales with your business and does not require a PhD to maintain.' },
+  { title: 'Analytics integration', desc: 'GA4, Mixpanel, Segment — full analytics stack setup, configuration, and ongoing management.' },
 ];
 ---
 
-<BaseLayout
-  title="Data Science & Analytics Services | Pronova Designs"
-  description="Custom data science and analytics solutions from Pronova Designs — ETL, dashboards, machine learning, and business intelligence for growing businesses."
+<ServiceLayout
+  title="Data science and analytics | Pronova"
+  description="We turn your raw data into clear insights and automated systems that drive smarter decisions. Data extraction, dashboards, predictive analytics, and machine learning."
+  badge="Data science and analytics"
+  heading="Your data is talking — you just need someone who speaks the "
+  headingHighlight="language."
+  subheading="Every business is sitting on data that could be driving better decisions — but it is scattered across spreadsheets, databases, CRMs, and platforms that do not talk to each other. We fix that."
+  ctaHeading="Let's figure out what your data is telling you"
+  ctaSubheading="Every data project starts with understanding what decisions you need to make — then we build backward to the infrastructure that supports those decisions."
 >
-  <section class="section pt-32 relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl pointer-events-none" />
+  <!-- The Problem -->
+  <section class="section">
     <div class="container max-w-4xl mx-auto">
-      <a href="/services/" class="text-brand-muted text-sm hover:text-brand-accent transition-colors inline-flex items-center gap-1 mb-8">← All Services</a>
-      <span class="badge mb-4">Data Science & Analytics</span>
-      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6">
-        Turn Your Data Into a <span class="gradient-text">Competitive Advantage</span>
-      </h1>
-      <p class="text-brand-muted text-lg leading-relaxed max-w-2xl mb-8">
-        End-to-end custom data solutions — from extraction and ETL to dashboards and machine
-        learning — that provide actionable insights and drive growth, efficiency, and innovation.
-      </p>
-      <a href="/contact/" class="btn-primary">Talk to a Data Expert</a>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-6">The data problem nobody wants to admit</h2>
+      <div class="text-brand-muted leading-relaxed space-y-4">
+        <p>You have got data everywhere. Google Analytics, your CRM, your POS system, email platforms, social media, spreadsheets your team maintains manually. It is all there. But it is not connected, it is not clean, and it is definitely not telling you anything useful in its current form.</p>
+        <p>Most businesses operate on a mix of instinct and incomplete reports. They know roughly what is working and roughly what is not, but they can not pinpoint exactly where revenue is leaking, which campaigns are actually profitable, or what their customers are about to do next.</p>
+      </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {offerings.map((o) => (
-          <div class="card">
-            <div class="text-3xl mb-3">{o.icon}</div>
-            <h3 class="font-semibold text-lg font-heading mb-2">{o.title}</h3>
-            <p class="text-brand-muted text-sm leading-relaxed">{o.desc}</p>
+  <!-- What We Build -->
+  <section class="section bg-brand-secondary/50">
+    <div class="container max-w-4xl mx-auto">
+      <span class="badge mb-4">What we build</span>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-12">From raw data to actionable intelligence</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {offerings.map((o, i) => (
+          <div class="card flex gap-4">
+            <span class="text-lg font-bold gradient-text font-heading shrink-0">0{i + 1}</span>
+            <div>
+              <h3 class="font-semibold font-heading mb-1">{o.title}</h3>
+              <p class="text-brand-muted text-sm leading-relaxed">{o.desc}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
-
-  <CTABanner heading="Ready to Unlock Your Data's Potential?" subheading="Start with a free discovery call." />
-</BaseLayout>
+</ServiceLayout>

@@ -1,28 +1,31 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* ── Brand Theme ── */
-@theme {
-  --color-brand-primary:   #0A0F1E;
-  --color-brand-secondary: #111827;
-  --color-brand-accent:    #4F6EF7;
-  --color-brand-highlight: #7B5CF6;
-  --color-brand-gold:      #F59E0B;
-  --color-brand-text:      #F0F4FF;
-  --color-brand-muted:     #8B9BB4;
-  --color-brand-border:    #1E293B;
-  --color-brand-surface:   #0D1526;
+/* ── Pronova Brand Theme ── */
+:root {
+  --color-brand-primary:   #0A0A0F;
+  --color-brand-secondary: #12121E;
+  --color-brand-accent:    #7B2FFF;
+  --color-brand-highlight: #00F0FF;
+  --color-brand-magenta:   #FF2D8A;
+  --color-brand-text:      #EEEDF5;
+  --color-brand-muted:     #8A8599;
+  --color-brand-border:    #1E1E2E;
+  --color-brand-surface:   #0F0F1A;
 
-  --font-heading: "Inter", system-ui, sans-serif;
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
   --font-body:    "Inter", system-ui, sans-serif;
   --font-mono:    "JetBrains Mono", monospace;
 
-  --background-image-gradient-brand: linear-gradient(135deg, #4F6EF7 0%, #7B5CF6 100%);
-  --background-image-gradient-dark:  linear-gradient(180deg, #0A0F1E 0%, #111827 100%);
-  --background-image-gradient-card:  linear-gradient(135deg, #0D1526 0%, #111827 100%);
+  --background-image-gradient-brand: linear-gradient(135deg, #7B2FFF 0%, #00F0FF 100%);
+  --background-image-gradient-dark:  linear-gradient(180deg, #0A0A0F 0%, #12121E 100%);
+  --background-image-gradient-card:  linear-gradient(135deg, #0F0F1A 0%, #12121E 100%);
+  --background-image-gradient-subtle: linear-gradient(135deg, rgba(123,47,255,0.08) 0%, rgba(0,240,255,0.08) 100%);
 
-  --shadow-glow-blue:   0 0 24px rgba(79,110,247,0.35);
-  --shadow-glow-purple: 0 0 24px rgba(123,92,246,0.35);
-  --shadow-card:        0 4px 24px rgba(0,0,0,0.4);
+  --shadow-glow-violet: 0 0 24px rgba(123,47,255,0.35);
+  --shadow-glow-cyan:   0 0 24px rgba(0,240,255,0.35);
+  --shadow-card:        0 4px 24px rgba(0,0,0,0.5);
 
   --animate-fade-in:  fadeIn 0.6s ease forwards;
   --animate-slide-up: slideUp 0.6s ease forwards;
@@ -36,7 +39,7 @@ html { scroll-behavior: smooth; }
 body { background-color: var(--color-brand-primary); color: var(--color-brand-text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
 h1,h2,h3,h4,h5,h6 { font-family: var(--font-heading); }
 a { transition: color 0.2s; }
-::selection { background-color: rgba(79,110,247,0.4); }
+::selection { background-color: rgba(123,47,255,0.4); }
 
 /* ── Component Utilities ── */
 @layer components {
@@ -45,7 +48,7 @@ a { transition: color 0.2s; }
     padding: 0.75rem 1.5rem; border-radius: 0.5rem;
     font-weight: 600; color: white;
     background-image: var(--background-image-gradient-brand);
-    box-shadow: var(--shadow-glow-blue);
+    box-shadow: var(--shadow-glow-violet);
     transition: opacity 0.2s; cursor: pointer;
   }
   .btn-primary:hover { opacity: 0.9; }
@@ -84,8 +87,8 @@ a { transition: color 0.2s; }
   }
   .card-hover:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-glow-blue);
-    border-color: rgba(79,110,247,0.3);
+    box-shadow: var(--shadow-glow-violet);
+    border-color: rgba(123,47,255,0.3);
   }
 
   .section { padding: 5rem 1rem; }
@@ -100,18 +103,18 @@ a { transition: color 0.2s; }
     display: inline-flex; align-items: center; gap: 0.375rem;
     padding: 0.25rem 0.75rem; border-radius: 9999px;
     font-size: 0.75rem; font-weight: 600;
-    background-color: rgba(79,110,247,0.1);
+    background-color: rgba(123,47,255,0.1);
     color: var(--color-brand-accent);
-    border: 1px solid rgba(79,110,247,0.2);
+    border: 1px solid rgba(123,47,255,0.2);
   }
 
   .badge-purple {
     display: inline-flex; align-items: center; gap: 0.375rem;
     padding: 0.25rem 0.75rem; border-radius: 9999px;
     font-size: 0.75rem; font-weight: 600;
-    background-color: rgba(123,92,246,0.1);
+    background-color: rgba(0,240,255,0.1);
     color: var(--color-brand-highlight);
-    border: 1px solid rgba(123,92,246,0.2);
+    border: 1px solid rgba(0,240,255,0.2);
   }
 
   .gradient-text {

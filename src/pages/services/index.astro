@@ -1,25 +1,23 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/sections/Hero.astro';
 import ServicesGrid from '@/components/sections/ServicesGrid.astro';
 import CTABanner from '@/components/sections/CTABanner.astro';
 ---
 
 <BaseLayout
-  title="Digital Product Development Services | Pronova Designs"
-  description="Explore Pronova Designs' full suite of digital services: app development, website development, digital marketing, UI/UX design, data science, and innovation consulting."
+  title="Services | Pronova"
+  description="App development, website development, digital marketing, UI/UX design, data science, and innovation consulting — all under one roof."
 >
-  <section class="section pt-32">
-    <div class="container text-center max-w-2xl mx-auto">
-      <span class="badge mb-4">Our Services</span>
-      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-4">
-        End-to-End Digital <span class="gradient-text">Solutions</span>
-      </h1>
-      <p class="text-brand-muted text-lg leading-relaxed">
-        From first idea to market launch and beyond — we cover every stage of your digital journey
-        with specialized expertise.
-      </p>
-    </div>
-  </section>
+  <Hero
+    badge="Our services"
+    heading="Three divisions. One team. "
+    headingHighlight="Zero gaps."
+    subheading="We bring together app development, website development, and digital marketing under one strategy. When these work in isolation, you get disconnected tools. When they work together, you get a pipeline that turns attention into revenue."
+    primaryCTA={{ label: 'Get a free consultation', href: '/contact/' }}
+    secondaryCTA={{ label: 'See our work', href: '/portfolio/' }}
+    showStats={false}
+  />
 
   <ServicesGrid />
 
@@ -27,15 +25,15 @@ import CTABanner from '@/components/sections/CTABanner.astro';
   <section class="section bg-brand-secondary/50">
     <div class="container">
       <div class="text-center mb-16">
-        <span class="badge mb-4">Our Process</span>
-        <h2 class="text-3xl md:text-4xl font-bold font-heading">How We Work</h2>
+        <span class="badge mb-4">Our process</span>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">How we work is different from what you are used to</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         {[
-          { step: '01', title: 'Discover', desc: 'We dive deep into your goals, audience, and competitive landscape.' },
-          { step: '02', title: 'Design', desc: 'Strategy and UI/UX design that prioritizes user experience and business outcomes.' },
-          { step: '03', title: 'Build', desc: 'Agile development with regular updates so you\'re always in the loop.' },
-          { step: '04', title: 'Grow', desc: 'Post-launch support, marketing, and data-driven iteration for sustained growth.' },
+          { step: '01', title: 'Discover', desc: 'We start with the problem you are trying to solve and work backward to the technology that solves it.' },
+          { step: '02', title: 'Design', desc: 'You see every screen, every interaction, every edge case before we write a line of code.' },
+          { step: '03', title: 'Build', desc: 'Staging environments you can access at any time. Bi-weekly demos. No black box.' },
+          { step: '04', title: 'Grow', desc: 'Post-launch support, marketing, and data-driven iteration. Month-to-month — cancel anytime.' },
         ].map((phase) => (
           <div class="text-center">
             <div class="w-12 h-12 rounded-full bg-gradient-brand flex items-center justify-center text-white font-bold text-sm mx-auto mb-4">

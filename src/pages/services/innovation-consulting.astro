@@ -1,61 +1,54 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import CTABanner from '@/components/sections/CTABanner.astro';
+import ServiceLayout from '@/layouts/ServiceLayout.astro';
 
 const offerings = [
-  { icon: '🗺️', title: 'Digital Strategy', desc: 'Comprehensive digital roadmaps aligned with your business goals and market position.' },
-  { icon: '🔧', title: 'Tech Stack Selection', desc: 'Expert guidance on the right technologies — React, Next.js, Node.js, GraphQL, MongoDB, and more.' },
-  { icon: '🚀', title: 'Product Roadmapping', desc: 'From MVP to market — phased development plans that minimize risk and maximize learning.' },
-  { icon: '💡', title: 'Innovation Workshops', desc: 'Facilitated sessions to surface opportunities, validate ideas, and align your team.' },
-  { icon: '📐', title: 'Architecture Review', desc: 'Audit your existing systems and receive a clear plan for modernization and scaling.' },
-  { icon: '🤝', title: 'Fractional CTO', desc: 'On-demand technical leadership for startups and businesses without an in-house CTO.' },
+  { title: 'Concept validation', desc: 'Before you spend six figures building something, we help you validate the concept — market fit, technical feasibility, and ROI justification.' },
+  { title: 'Tech stack audit', desc: 'We audit your current technology to find weak links costing you money, then recommend specific improvements with projected impact.' },
+  { title: 'Phased digital strategy', desc: 'A sequenced roadmap that prioritizes the highest-impact investments first — so you are not trying to do everything at once.' },
+  { title: 'Product roadmapping', desc: 'From MVP to market — phased development plans that minimize risk and maximize learning at every stage.' },
+  { title: 'Architecture review', desc: 'Deep technical assessment of your existing systems with a clear plan for modernization and scaling.' },
+  { title: 'Fractional CTO', desc: 'On-demand technical leadership for startups and businesses without an in-house CTO. Strategy, vendor evaluation, team hiring.' },
 ];
-
-const techStack = ['React', 'React Native', 'Next.js', 'Node.js', 'Express.js', 'Apollo Server', 'GraphQL', 'MongoDB'];
 ---
 
-<BaseLayout
-  title="Innovation Consulting | Pronova Designs"
-  description="Strategic digital consulting from Pronova Designs — tech stack guidance, product roadmapping, architecture reviews, and fractional CTO services."
+<ServiceLayout
+  title="Innovation consulting | Pronova"
+  description="We help businesses figure out which technology investments will actually move the needle — and then we build them. Concept validation, tech audits, and digital strategy."
+  badge="Innovation consulting"
+  heading="When you know things need to change but you are not sure what to "
+  headingHighlight="build."
+  subheading="Technology decisions are expensive and hard to reverse. We help you evaluate opportunities, validate concepts, define technical requirements, and build a roadmap that connects your business goals to specific, buildable solutions."
+  ctaHeading="Let's figure out what is worth building"
+  ctaSubheading="We are not theoretical consultants — we are the people who will actually build the thing once the strategy is right."
 >
-  <section class="section pt-32 relative overflow-hidden">
-    <div class="absolute top-0 left-0 w-96 h-96 bg-brand-highlight/10 rounded-full blur-3xl pointer-events-none" />
+  <!-- The Problem -->
+  <section class="section">
     <div class="container max-w-4xl mx-auto">
-      <a href="/services/" class="text-brand-muted text-sm hover:text-brand-accent transition-colors inline-flex items-center gap-1 mb-8">← All Services</a>
-      <span class="badge mb-4">Innovation Consulting</span>
-      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6">
-        Strategic Guidance for Your <span class="gradient-text">Digital Future</span>
-      </h1>
-      <p class="text-brand-muted text-lg leading-relaxed max-w-2xl mb-8">
-        We provide leading digital consulting services — from web and mobile development strategy
-        to data analytics and digital marketing — all customized to meet your unique business needs.
-      </p>
-      <a href="/contact/" class="btn-primary">Book a Strategy Session</a>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-6">The problem we keep seeing</h2>
+      <div class="text-brand-muted leading-relaxed space-y-4">
+        <p>Businesses — especially small and mid-size ones — are being sold technology they do not need by people who will not be around to fix it when things go sideways. A $40,000 app that nobody uses. A "digital transformation" initiative that produces a deck of slides and nothing else. An AI integration that sounds impressive in the pitch meeting but creates more work, not less.</p>
+        <p>The issue is not that these businesses lack ambition or budget. It is that they do not have a trusted technical partner who will tell them the truth: <strong class="text-brand-text">what is worth building, what is not, and what order to do things in.</strong></p>
+      </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-        {offerings.map((o) => (
-          <div class="card">
-            <div class="text-3xl mb-3">{o.icon}</div>
-            <h3 class="font-semibold text-lg font-heading mb-2">{o.title}</h3>
-            <p class="text-brand-muted text-sm leading-relaxed">{o.desc}</p>
+  <!-- What We Deliver -->
+  <section class="section bg-brand-secondary/50">
+    <div class="container max-w-4xl mx-auto">
+      <span class="badge mb-4">What we deliver</span>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-12">Advisors who also build</h2>
+      <p class="text-brand-muted leading-relaxed mb-8">What makes this different from typical consulting is simple: we are not just advisors. We are builders. If the strategy calls for an app, a website, or a marketing system, we build it — with the same team that helped define the strategy.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {offerings.map((o, i) => (
+          <div class="card flex gap-4">
+            <span class="text-lg font-bold gradient-text font-heading shrink-0">0{i + 1}</span>
+            <div>
+              <h3 class="font-semibold font-heading mb-1">{o.title}</h3>
+              <p class="text-brand-muted text-sm leading-relaxed">{o.desc}</p>
+            </div>
           </div>
         ))}
       </div>
-
-      <div class="card text-center max-w-2xl mx-auto">
-        <p class="text-brand-muted text-sm uppercase tracking-wider font-semibold mb-4">Recommended Core Tech Stack</p>
-        <div class="flex flex-wrap justify-center gap-3">
-          {techStack.map((t) => (
-            <span class="px-3 py-1.5 rounded-lg bg-brand-primary border border-brand-border text-sm font-medium text-brand-text">{t}</span>
-          ))}
-        </div>
-      </div>
     </div>
   </section>
-
-  <CTABanner heading="Let's Map Out Your Digital Strategy" subheading="One conversation can change everything." />
-</BaseLayout>
+</ServiceLayout>

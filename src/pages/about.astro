@@ -20,18 +20,18 @@ const team = [
 ];
 
 const values = [
-  { icon: '🎯', title: 'Business-First Thinking', desc: 'Every decision is grounded in your real-world goals — not just cool tech.' },
-  { icon: '🤝', title: 'Genuine Partnership', desc: 'We embed ourselves in your success for the long haul, not just the project.' },
-  { icon: '⚡', title: 'Innovation Always', desc: 'We stay on the cutting edge so your products never fall behind.' },
-  { icon: '📐', title: 'Craftsmanship', desc: 'We obsess over the details — design, performance, and code quality.' },
-  { icon: '🌎', title: 'Community Impact', desc: 'Proud to grow local businesses in the Rio Grande Valley and beyond.' },
-  { icon: '🔓', title: 'Transparency', desc: 'No hidden costs, no vague timelines. Just honest communication.' },
+  { title: 'Business-first thinking', desc: 'Every decision is grounded in your real-world goals — not just cool tech.' },
+  { title: 'Genuine partnership', desc: 'We embed ourselves in your success for the long haul, not just the project.' },
+  { title: 'Month-to-month everything', desc: 'No long-term contracts. We earn your business every single month.' },
+  { title: 'Craftsmanship', desc: 'We obsess over the details — design, performance, and code quality.' },
+  { title: 'Community impact', desc: 'Proud to grow local businesses in the Rio Grande Valley and beyond.' },
+  { title: 'You own everything', desc: 'The code, the design, the server configuration — it is all yours. Zero lock-in.' },
 ];
 ---
 
 <BaseLayout
-  title="About Pronova Designs"
-  description="Learn about the Pronova Designs team — two co-founders from Brownsville, TX building digital products that drive real growth for startups and businesses."
+  title="About | Pronova"
+  description="A technology studio that builds the entire pipeline — from first click to closed deal. Based in Texas, building things that work."
 >
   <!-- Page Hero -->
   <section class="relative section pt-32 overflow-hidden">
@@ -39,14 +39,12 @@ const values = [
       <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl" />
     </div>
     <div class="container text-center max-w-3xl mx-auto relative z-10">
-      <span class="badge mb-4">About Us</span>
+      <span class="badge mb-4">About Pronova</span>
       <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6">
-        Built by Builders,<br /><span class="gradient-text">for Builders</span>
+        Built by builders, <span class="gradient-text">for builders</span>
       </h1>
       <p class="text-brand-muted text-lg leading-relaxed">
-        Pronova Designs was founded in 2013 in Brownsville, Texas with a simple mission:
-        help startups and small businesses compete in the digital world with custom-built,
-        results-driven digital products.
+        Pronova is a technology studio that brings together app development, website development, and digital marketing under one roof. When these work in isolation, you get disconnected tools. When they work together — designed by the same team, built on the same strategy — you get a pipeline that turns attention into revenue.
       </p>
     </div>
   </section>
@@ -56,19 +54,13 @@ const values = [
     <div class="container max-w-4xl mx-auto">
       <div class="card space-y-4 text-brand-muted leading-relaxed">
         <p>
-          We started Pronova Designs because we saw a gap — too many talented local businesses
-          were being left behind in the digital revolution, either priced out of quality solutions
-          or stuck with cookie-cutter agencies that didn't understand their goals.
+          We started Pronova because we kept seeing the same problem: businesses with great products and real market demand getting outpaced by competitors with better digital infrastructure. Not because those competitors were smarter — but because they had invested in the right technology at the right time.
         </p>
         <p>
-          Over a decade later, we've helped dozens of companies across Texas and beyond launch
-          apps, grow online, and harness data to make smarter decisions. We're not just a vendor —
-          we're a long-term partner invested in your growth.
+          Over 15 years later, we have generated over 147,000 leads for clients, put 47 businesses on page one of Google, and tracked over $8.7 million in client revenue tied directly to our work. We are based in Texas and we build things that work.
         </p>
         <p>
-          Our team combines deep technical expertise with a strategic business mindset. We speak
-          both languages — code and commerce — and we use that fluency to build digital products
-          that don't just work, but win.
+          Our team combines deep technical expertise with a strategic business mindset. The biggest gap in digital development is not technical — it is the translation layer between what a business owner needs and what a developer builds. We are obsessive about closing that gap.
         </p>
       </div>
     </div>
@@ -78,8 +70,8 @@ const values = [
   <section class="section">
     <div class="container">
       <div class="text-center mb-16">
-        <span class="badge mb-4">The Team</span>
-        <h2 class="text-3xl md:text-4xl font-bold font-heading">Meet the Co-Founders</h2>
+        <span class="badge mb-4">The team</span>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">Meet the co-founders</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
         {team.map((member) => (
@@ -111,13 +103,13 @@ const values = [
   <section class="section bg-brand-secondary/50">
     <div class="container">
       <div class="text-center mb-16">
-        <span class="badge mb-4">Our Values</span>
-        <h2 class="text-3xl md:text-4xl font-bold font-heading">What We Stand For</h2>
+        <span class="badge mb-4">Our values</span>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading">What we stand for</h2>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {values.map((value) => (
           <div class="card">
-            <div class="text-3xl mb-3">{value.icon}</div>
+            <div class="mb-3 w-5 h-5 rounded-full bg-brand-accent/20 flex items-center justify-center"><span class="w-2 h-2 rounded-full bg-brand-accent"></span></div>
             <h3 class="font-semibold text-lg font-heading mb-2">{value.title}</h3>
             <p class="text-brand-muted text-sm leading-relaxed">{value.desc}</p>
           </div>
@@ -127,7 +119,7 @@ const values = [
   </section>
 
   <CTABanner
-    heading="Let's Build Something Together"
-    subheading="Ready to partner with a team that's genuinely invested in your success?"
+    heading="Let's build something together"
+    subheading="Ready to partner with a team that is genuinely invested in your success?"
   />
 </BaseLayout>

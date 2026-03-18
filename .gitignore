@@ -18,6 +18,9 @@ npm-debug.log*
 tina/__generated__/
 .tina/__generated__/
 
+# Vercel
+.vercel/
+
 # Editor
 .vscode/
 .idea/
@@ -25,3 +28,6 @@ tina/__generated__/
 *.swo
 .DS_Store
 Thumbs.db
+
+# Snapshots
+.snapshots/

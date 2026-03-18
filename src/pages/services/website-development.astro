@@ -1,53 +1,135 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import CTABanner from '@/components/sections/CTABanner.astro';
+import ServiceLayout from '@/layouts/ServiceLayout.astro';
 
-const features = [
-  { icon: '⚡', title: 'Performance-First', desc: 'Core Web Vitals optimized for speed, SEO, and user experience.' },
-  { icon: '📱', title: 'Fully Responsive', desc: 'Pixel-perfect on every screen size — mobile, tablet, and desktop.' },
-  { icon: '🔒', title: 'Security Hardened', desc: 'SSL, secure hosting, regular updates, and vulnerability monitoring.' },
-  { icon: '🔍', title: 'SEO Ready', desc: 'Structured data, meta tags, sitemaps, and clean code from day one.' },
-  { icon: '🎨', title: 'Custom Design', desc: 'Tailored to your brand — not a template slapped with your logo.' },
-  { icon: '📊', title: 'Analytics Integrated', desc: 'GA4, Search Console, and conversion tracking set up from launch.' },
+const tiers = [
+  { name: 'Basic', price: '$2,500 - $4,000', pages: '3 to 5 pages', timeline: '1 month', desc: 'A professional online presence that works. Clean, responsive design. Mobile-optimized. WordPress CMS for easy updates. Basic SEO. SSL security. Performance optimization.', best: 'New businesses, solo practitioners, or companies that need a professional web presence quickly.' },
+  { name: 'Advanced', price: '$4,000 - $7,500', pages: '6 to 10 pages', timeline: '1 month', desc: 'A marketing machine, not just a website. Everything in Basic, plus advanced performance optimization, live chat, advanced security, multiple language support, and CMS training.', best: 'Growing businesses that need their website to actively generate leads. Medical practices, law firms, multi-service companies.' },
+  { name: 'Enterprise', price: '$7,500 - $10,000', pages: '11 to 15 pages', timeline: '1 to 2 months', desc: 'The website your business will grow into. Everything in Advanced, plus e-commerce, hardened security, lightning performance, multi-language CMS, and full team training.', best: 'Established businesses with complex needs. E-commerce, multi-location companies, organizations handling serious traffic.' },
+];
+
+const hosting = [
+  { name: 'Basic', price: '$100/mo', features: 'VPS hosting, quarterly backups, quarterly updates, basic security, email and chat support.' },
+  { name: 'Advanced', price: '$220/mo', features: 'Dedicated VPS, monthly backups, monthly updates, advanced security, performance optimization, analytics, phone support.' },
+  { name: 'Enterprise', price: '$350/mo', features: 'Dedicated+ VPS, weekly backups, bi-monthly updates, hardened security, CDN, live uptime monitoring, full analytics, priority support.' },
 ];
 ---
 
-<BaseLayout
-  title="Website Development Services | Pronova Designs"
-  description="Custom, high-performance website development in Brownsville, TX. SEO-ready, fully responsive websites tailored to your brand and business goals."
+<ServiceLayout
+  title="Website development | Pronova"
+  description="Custom, high-performance websites that your team can actually update. SEO-ready from day one, delivered in four to eight weeks."
+  badge="Website development"
+  heading="Your website is costing you customers every single day it stays "
+  headingHighlight="the way it is."
+  subheading="75% of people judge a company's credibility based on its website design. We build fast, secure, SEO-ready websites in four to eight weeks — not four to eight months."
+  ctaHeading="Let's look at your current site together"
+  ctaSubheading="Before we talk about a new build, we will do a quick teardown of your existing website — completely free. Speed, mobile usability, SEO readiness, and competitor comparison."
 >
-  <section class="section pt-32 relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl pointer-events-none" />
+  <!-- The Problem -->
+  <section class="section">
     <div class="container max-w-4xl mx-auto">
-      <a href="/services/" class="text-brand-muted text-sm hover:text-brand-accent transition-colors inline-flex items-center gap-1 mb-8">← All Services</a>
-      <span class="badge mb-4">Website Development</span>
-      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6">
-        Websites That <span class="gradient-text">Work as Hard as You Do</span>
-      </h1>
-      <p class="text-brand-muted text-lg leading-relaxed max-w-2xl mb-8">
-        We build high-performance, conversion-focused websites that authentically represent your
-        brand and are engineered to rank, engage, and convert.
-      </p>
-      <div class="flex flex-wrap gap-4">
-        <a href="/contact/" class="btn-primary">Get a Free Quote</a>
-        <a href="/portfolio/" class="btn-secondary">See Our Websites</a>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-6">Why your last website project probably went sideways</h2>
+      <div class="text-brand-muted leading-relaxed space-y-4">
+        <p><strong class="text-brand-text">It looked good but does not perform.</strong> Pretty design, but it loads in seven seconds, is not optimized for mobile, and Google can not figure out what it is about.</p>
+        <p><strong class="text-brand-text">It was cheap but you are stuck.</strong> The $500 WordPress site seemed like a deal until you realized you can not update it without calling the developer. Or the developer disappeared.</p>
+        <p><strong class="text-brand-text">It took forever and the developer stopped communicating.</strong> The project was supposed to take four weeks. It has been four months. You have sent 12 follow-up emails.</p>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((f) => (
+  <!-- Process -->
+  <section class="section bg-brand-secondary/50">
+    <div class="container max-w-4xl mx-auto">
+      <span class="badge mb-4">Our process</span>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Speed and accountability</h2>
+      <p class="text-brand-muted leading-relaxed mb-12">We deliver a complete, polished website in <strong class="text-brand-text">four to eight weeks</strong>. Every step has a clear deliverable and your explicit approval before we move forward.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {[
+          { week: 'Week 1', title: 'Discovery and planning', desc: 'We understand your business, your customers, and what action they need to take. Site architecture, design concepts, content outline.' },
+          { week: 'Week 2', title: 'Design and content', desc: 'Full-page mockups, mobile responsive previews, content drafts. Your feedback incorporated before we build.' },
+          { week: 'Weeks 3-4', title: 'Development', desc: 'Built in a staging environment you can access. Responsive design, CMS setup, speed optimization, security.' },
+          { week: 'Final week', title: 'Testing and launch', desc: 'Cross-device, cross-browser testing. Performance under two seconds. DNS, SSL, SEO-readiness. CMS training for your team.' },
+        ].map((phase) => (
           <div class="card">
-            <div class="text-3xl mb-3">{f.icon}</div>
-            <h3 class="font-semibold text-lg font-heading mb-2">{f.title}</h3>
-            <p class="text-brand-muted text-sm leading-relaxed">{f.desc}</p>
+            <span class="badge-purple text-xs mb-3">{phase.week}</span>
+            <h3 class="font-semibold text-lg font-heading mb-2">{phase.title}</h3>
+            <p class="text-brand-muted text-sm leading-relaxed">{phase.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <CTABanner heading="Ready for a Website That Actually Performs?" subheading="Let's build something you're proud of." />
-</BaseLayout>
+  <!-- Pricing Tiers -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="badge mb-4">Investment</span>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">What you get at each level</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {tiers.map((tier) => (
+          <div class="card flex flex-col">
+            <h3 class="text-xl font-bold font-heading mb-1">{tier.name}</h3>
+            <p class="text-2xl font-bold gradient-text mb-4">{tier.price}</p>
+            <div class="space-y-2 mb-4">
+              <p class="text-brand-muted text-sm"><strong class="text-brand-text">Scope:</strong> {tier.pages}</p>
+              <p class="text-brand-muted text-sm"><strong class="text-brand-text">Timeline:</strong> {tier.timeline}</p>
+            </div>
+            <p class="text-brand-muted text-sm leading-relaxed mb-4">{tier.desc}</p>
+            <p class="text-brand-muted text-xs mt-auto pt-4 border-t border-brand-border"><strong class="text-brand-text">Best for:</strong> {tier.best}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment + Hosting -->
+  <section class="section-sm bg-brand-secondary/50">
+    <div class="container max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold font-heading mb-6">Payment structure</h2>
+      <div class="grid grid-cols-3 gap-4 mb-8">
+        {[
+          { pct: '10%', label: 'Initial deposit' },
+          { pct: '55%', label: 'Mid-project approval' },
+          { pct: '35%', label: 'At completion' },
+        ].map((m) => (
+          <div class="card text-center">
+            <p class="text-2xl font-bold gradient-text">{m.pct}</p>
+            <p class="text-brand-muted text-xs mt-1">{m.label}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-brand-muted text-sm mb-8"><strong class="text-brand-text">Plus:</strong> Two months of free hosting and maintenance after launch.</p>
+
+      <h2 class="text-2xl font-bold font-heading mb-6">Hosting and maintenance</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {hosting.map((h) => (
+          <div class="card">
+            <h3 class="font-semibold font-heading">{h.name}</h3>
+            <p class="text-xl font-bold gradient-text mb-2">{h.price}</p>
+            <p class="text-brand-muted text-xs leading-relaxed">{h.features}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-brand-muted text-sm mt-4">Month-to-month. Cancel anytime. Your site files and data are always yours.</p>
+    </div>
+  </section>
+
+  <!-- Case Study -->
+  <section class="section">
+    <div class="container max-w-4xl mx-auto">
+      <span class="badge mb-4">Case study</span>
+      <h2 class="text-3xl font-bold font-heading mb-6">San Benito Housing Authority</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="font-semibold text-brand-text mb-2">The problem</h3>
+          <p class="text-brand-muted text-sm leading-relaxed">Outdated website that did not reflect the organization's role in the community. Visitors could not find information. The site was not mobile-friendly and projected "government office from 2008."</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-brand-text mb-2">What we built</h3>
+          <p class="text-brand-muted text-sm leading-relaxed">A 20-page modernized website with clear navigation, mobile-responsive design, WordPress CMS, VPS cloud hosting, and high-security protocols. Four weeks from kickoff to live. $15,000 all-in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>

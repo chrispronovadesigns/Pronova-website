@@ -2,11 +2,12 @@
 interface Props {
   badge?: string;
   heading: string;
-  headingHighlight?: string; // portion of heading to gradient
+  headingHighlight?: string;
   subheading: string;
   primaryCTA?: { label: string; href: string };
   secondaryCTA?: { label: string; href: string };
   showStats?: boolean;
+  descriptor?: string;
 }
 
 const {
@@ -14,19 +15,19 @@ const {
   heading,
   headingHighlight,
   subheading,
-  primaryCTA = { label: 'Get a Free Consultation', href: '/contact/' },
-  secondaryCTA = { label: 'View Our Work', href: '/portfolio/' },
+  primaryCTA = { label: 'Start your project', href: '/contact/' },
+  secondaryCTA = { label: 'See our work', href: '/portfolio/' },
   showStats = true,
+  descriptor,
 } = Astro.props;
 
-// Split heading around highlight text
 const before = headingHighlight ? heading.split(headingHighlight)[0] : heading;
 const after  = headingHighlight ? heading.split(headingHighlight)[1] ?? '' : '';
 
 const stats = [
-  { value: '10+', label: 'Years in Business' },
-  { value: '50+', label: 'Projects Delivered' },
-  { value: '30+', label: 'Happy Clients' },
+  { value: '15+', label: 'Years building digital products' },
+  { value: '47', label: 'Businesses on page one' },
+  { value: '$8.7M', label: 'Revenue tracked for clients' },
 ];
 ---
 
@@ -34,9 +35,9 @@ const stats = [
   <!-- Background glow effects -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
     <div class="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-brand-accent/10 rounded-full blur-3xl" />
-    <div class="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] bg-brand-highlight/10 rounded-full blur-3xl" />
+    <div class="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] bg-brand-highlight/8 rounded-full blur-3xl" />
     <!-- Grid overlay -->
-    <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(79,110,247,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(79,110,247,0.3) 1px, transparent 1px); background-size: 60px 60px;" />
+    <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(123,47,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(123,47,255,0.3) 1px, transparent 1px); background-size: 60px 60px;" />
   </div>
 
   <div class="container max-w-7xl mx-auto px-4 md:px-8 py-32 text-center relative z-10">
@@ -46,11 +47,17 @@ const stats = [
       </div>
     )}
 
-    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight mb-6 animate-slide-up">
+    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-heading leading-[1.1] mb-6 animate-slide-up">
       {before}
       {headingHighlight && <span class="gradient-text">{headingHighlight}</span>}
       {after}
     </h1>
+
+    {descriptor && (
+      <p class="text-brand-highlight font-heading font-medium text-sm md:text-base tracking-[0.1em] uppercase mb-6 animate-fade-in">
+        {descriptor}
+      </p>
+    )}
 
     <p class="text-brand-muted text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-in">
       {subheading}

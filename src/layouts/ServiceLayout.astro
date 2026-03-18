@@ -1,0 +1,46 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  badge: string;
+  heading: string;
+  headingHighlight?: string;
+  subheading: string;
+  ctaHeading?: string;
+  ctaSubheading?: string;
+}
+
+const {
+  title,
+  description,
+  badge,
+  heading,
+  headingHighlight,
+  subheading,
+  ctaHeading,
+  ctaSubheading,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <Hero
+    badge={badge}
+    heading={heading}
+    headingHighlight={headingHighlight}
+    subheading={subheading}
+    primaryCTA={{ label: 'Get a free consultation', href: '/contact/' }}
+    secondaryCTA={{ label: 'See our work', href: '/portfolio/' }}
+    showStats={false}
+  />
+
+  <slot />
+
+  <CTABanner
+    heading={ctaHeading}
+    subheading={ctaSubheading}
+  />
+</BaseLayout>

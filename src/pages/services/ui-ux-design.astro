@@ -1,50 +1,54 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import CTABanner from '@/components/sections/CTABanner.astro';
+import ServiceLayout from '@/layouts/ServiceLayout.astro';
 
-const deliverables = [
-  { icon: '🗺️', title: 'User Research & Journey Mapping', desc: 'Understanding your users deeply to design experiences they love.' },
-  { icon: '🖊️', title: 'Wireframing & Prototyping', desc: 'Rapid iteration from concept to interactive prototype before a line of code is written.' },
-  { icon: '🎨', title: 'Visual Design', desc: 'Polished, on-brand UI that balances beauty with usability.' },
-  { icon: '📐', title: 'Design Systems', desc: 'Scalable component libraries that keep your product consistent as it grows.' },
-  { icon: '♿', title: 'Accessibility (WCAG)', desc: 'Inclusive design practices so your product works for everyone.' },
-  { icon: '🧪', title: 'Usability Testing', desc: 'Real user feedback validated before launch to eliminate friction.' },
+const process = [
+  { title: 'User research and personas', desc: 'Real data about your users, not assumptions. Who they are, what they want, what frustrates them.' },
+  { title: 'Information architecture', desc: 'The structural blueprint that determines how content is organized and how users navigate through it.' },
+  { title: 'Wireframes', desc: 'Low-fidelity layouts that let us test structure and flow before anyone worries about visual polish.' },
+  { title: 'Visual design', desc: 'The interface comes to life with your brand identity, purposeful color systems, typography that aids readability, and visual hierarchy that guides the eye.' },
+  { title: 'Interactive prototyping', desc: 'A clickable version of the product that lets you test the experience before development begins. This is where we catch problems that cost 10x more to fix in code.' },
+  { title: 'Usability testing', desc: 'Real users interact with the prototype while we watch, measure, and refine.' },
 ];
 ---
 
-<BaseLayout
-  title="UI/UX Design Services | Pronova Designs"
-  description="Expert UI/UX design services in Brownsville, TX. User research, wireframing, prototyping, and visual design for apps and websites."
+<ServiceLayout
+  title="UI/UX design | Pronova"
+  description="Design that works before it looks good. User research, wireframing, visual design, prototyping, and usability testing for apps and websites."
+  badge="UI/UX design"
+  heading="Design that works before it "
+  headingHighlight="looks good."
+  subheading="Beautiful design that nobody can figure out how to use is just expensive art. We design digital experiences that feel natural to your users — and drive the specific actions your business needs."
+  ctaHeading="Let's design something that actually works"
+  ctaSubheading="We start with understanding your users and your business goals, then build interfaces that serve both."
 >
-  <section class="section pt-32 relative overflow-hidden">
-    <div class="absolute top-0 left-0 w-96 h-96 bg-brand-highlight/10 rounded-full blur-3xl pointer-events-none" />
+  <!-- The Problem -->
+  <section class="section">
     <div class="container max-w-4xl mx-auto">
-      <a href="/services/" class="text-brand-muted text-sm hover:text-brand-accent transition-colors inline-flex items-center gap-1 mb-8">← All Services</a>
-      <span class="badge mb-4">UI/UX Design</span>
-      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6">
-        Design That <span class="gradient-text">Delights and Converts</span>
-      </h1>
-      <p class="text-brand-muted text-lg leading-relaxed max-w-2xl mb-8">
-        Excellent design isn't just about looks — it's about creating an experience.
-        We combine technical depth and design artistry to build products users love.
-      </p>
-      <a href="/contact/" class="btn-primary">Start a Design Project</a>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-6">The real cost of bad design</h2>
+      <div class="text-brand-muted leading-relaxed space-y-4">
+        <p>Most businesses think of design as the visual layer — colors, fonts, layouts. That is a piece of it. But the design decisions that actually affect your revenue are invisible to most people: where buttons are placed, how forms are structured, what information appears first, how navigation flows from one screen to the next.</p>
+        <p><strong class="text-brand-text">88% of users</strong> will not return to a site after a bad experience. <strong class="text-brand-text">70% of online businesses</strong> fail because of poor usability. Every confusing menu, every buried call to action, every extra click between your user and their goal is revenue walking out the door.</p>
+      </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {deliverables.map((d) => (
-          <div class="card">
-            <div class="text-3xl mb-3">{d.icon}</div>
-            <h3 class="font-semibold text-lg font-heading mb-2">{d.title}</h3>
-            <p class="text-brand-muted text-sm leading-relaxed">{d.desc}</p>
+  <!-- Process -->
+  <section class="section bg-brand-secondary/50">
+    <div class="container max-w-4xl mx-auto">
+      <span class="badge mb-4">Our process</span>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Function first, then beauty</h2>
+      <p class="text-brand-muted leading-relaxed mb-12">We do not start with mood boards or color palettes. We start with questions: Who is using this? What do they need to accomplish? What is getting in their way right now?</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {process.map((step, i) => (
+          <div class="card flex gap-4">
+            <span class="text-lg font-bold gradient-text font-heading shrink-0">0{i + 1}</span>
+            <div>
+              <h3 class="font-semibold font-heading mb-1">{step.title}</h3>
+              <p class="text-brand-muted text-sm leading-relaxed">{step.desc}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
-
-  <CTABanner heading="Let's Design Something Beautiful" subheading="Great design starts with a conversation." />
-</BaseLayout>
+</ServiceLayout>

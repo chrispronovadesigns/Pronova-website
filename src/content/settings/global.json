@@ -1,23 +1,23 @@
 {
-  "siteName": "Pronova Designs",
-  "tagline": "Custom Digital Solutions for Growing Businesses",
+  "siteName": "Pronova",
+  "tagline": "You know the problem. We create the solution.",
   "contact": {
-    "email": "hello@pronovadesigns.com",
-    "phone": "",
-    "address": "",
+    "email": "chris@pronovadesigns.com",
+    "phone": "(956) 254-0043",
+    "address": "704 Paredes Line Rd",
     "city": "Brownsville",
     "state": "TX"
   },
   "social": {
     "linkedin": "https://www.linkedin.com/company/pronova-designs",
-    "facebook": "https://www.facebook.com/ProNovaDesigns/",
-    "instagram": "",
+    "facebook": "https://www.facebook.com/pronovadesignsbtx/",
+    "instagram": "https://www.instagram.com/pronova_Designs/",
     "twitter": "",
     "youtube": ""
   },
   "defaultSeo": {
-    "metaTitle": "Pronova Designs | Custom Digital Solutions",
-    "metaDescription": "Custom digital solutions for startups and growing businesses in Brownsville, TX. App development, websites, digital marketing, UI/UX, data science, and more.",
+    "metaTitle": "Pronova — Apps. Websites. Marketing.",
+    "metaDescription": "We build the digital products, websites, and marketing systems that turn business problems into measurable growth. Based in Texas.",
     "ogImage": "/images/og-default.png"
   },
   "googleAnalyticsId": ""

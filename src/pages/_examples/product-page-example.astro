@@ -1,0 +1,42 @@
+---
+// Example: Product Page with SEO Schema
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/seo/Breadcrumbs.astro';
+import { buildProductSchema } from '@/lib/seo/schema';
+
+const productSchema = buildProductSchema({
+  name: 'Pronova Productivity App',
+  description: 'All-in-one productivity app designed for modern teams. Task management, time tracking, and collaboration in one place.',
+  image: '/images/products/productivity-app.png',
+  price: '29',
+  priceCurrency: 'USD',
+  url: 'https://pronovadesigns.com/products/pronova-productivity-app/',
+  applicationCategory: 'BusinessApplication',
+});
+
+const breadcrumbItems = [
+  { name: 'Home', url: '/' },
+  { name: 'Products', url: '/products/' },
+  { name: 'Pronova Productivity App' },
+];
+---
+
+<BaseLayout
+  title="Pronova Productivity App"
+  description="All-in-one productivity app designed for modern teams. Task management, time tracking, and collaboration in one place."
+  image="/images/products/productivity-app.png"
+  keywords={['productivity app', 'task management', 'time tracking', 'team collaboration']}
+  schemas={[productSchema]}
+>
+  <div class="section">
+    <div class="container">
+      <Breadcrumbs items={breadcrumbItems} class="mb-8" />
+      
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Pronova Productivity App
+      </h1>
+      
+      <!-- Your product content here -->
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,159 @@
+
+SECTION 01
+Brand overview
+
+
+Brand essence
+Pronova is a luxury technology studio that builds digital products and systems defining what comes next. We sit at the intersection of premium design, advanced engineering, and data intelligence — creating work that performs as good as it looks.
+Positioning statement
+For ambitious companies and entrepreneurs who need digital products that actually generate revenue, Pronova is the technology studio that builds the entire pipeline — from first click to closed deal. Unlike traditional agencies that optimize for vanity metrics, we combine world-class design with automated lead intelligence to deliver measurable business outcomes.
+Tagline
+“You know the problem. We create the solution.”
+This is the primary tagline used across all brand touchpoints — website hero sections, pitch decks, proposal covers, business cards, and social profiles.
+Alternate version: “You know the problem. We engineer the solution.”
+The “engineer” variant carries a stronger technical signal and may be preferred in contexts targeting developer audiences or enterprise clients. Use “create” as the default for all general-purpose applications.
+Secondary descriptor (used beneath tagline when service-line specificity is needed): Apps. Websites. Marketing.
+Brand pillars
+
+
+What Pronova is and isn't
+
+SECTION 02
+Brand architecture
+
+
+Pronova operates through three interconnected divisions. Each has its own focus but shares the core brand identity.
+
+
+
+When referring to a specific division, always use the full name (e.g., "Pronova Studio") on first reference. Subsequent references can use just the division name (e.g., "Studio"). Never abbreviate to initials.
+SECTION 03
+Logo usage
+
+
+Logo configurations
+The Pronova logo consists of two elements: the geometric hexagonal mark and the PRONOVA wordmark. These can be used in three configurations:
+
+
+
+Color variations
+The logo appears in four color variations depending on background:
+Full color on dark: Primary version. Hexagonal mark in brand colors on obsidian or charcoal backgrounds.
+Full color on light: For light backgrounds. Mark retains brand colors, wordmark in obsidian.
+White: All-white version for use over images, gradients, or colored backgrounds.
+Obsidian: All-dark version for light print materials and formal documents.
+
+Clear space and minimum size
+Maintain clear space equal to the height of the "P" in the wordmark on all sides of the logo. Never crowd the logo with other elements.
+Minimum sizes: Full lockup — 120px wide (digital), 1.5 inches (print). Mark only — 32px (digital), 0.4 inches (print).
+
+Logo don'ts
+Never rotate, distort, or add effects to the logo. Never change the logo colors outside approved variations. Never place the logo on busy backgrounds without sufficient contrast. Never add outlines, shadows, or gradients to the logo. Never recreate or modify the hexagonal mark.
+
+Wordmark update
+The wordmark has been updated from "PRONOVA DESIGNS" to "PRONOVA" only. All materials must use the updated wordmark. Legacy "Pronova Designs" branding should be retired from active use.
+SECTION 04
+Color system
+
+
+Our color system balances dark luxury foundations with electric accent colors. The obsidian base keeps things premium; the violet, cyan, and magenta accents bring the psychedelic futurism to life.
+
+PRIMARY PALETTE
+
+
+ACCENT PALETTE
+
+
+The Pronova gradient
+Our signature gradient flows from Electric Violet (#7B2FFF) through Cyan Plasma (#00F0FF). This gradient appears on buttons, hero backgrounds, accent lines, and data visualizations. It's the most recognizable element of the visual system after the logo.
+Use the gradient sparingly — it should feel special, not wallpaper. One gradient element per composition is the general rule.
+
+
+
+Usage ratios
+Dark backgrounds (obsidian + charcoal): 70% of total composition. White/lavender text: 20%. Accent colors: 10%. The accents should feel like strategic punctuation, not primary coverage.
+
+Print considerations
+For print materials, convert all hex values to CMYK. The obsidian and charcoal backgrounds translate well to rich black (C:60 M:40 Y:40 K:100). Accent colors should be specified as spot colors (Pantone) for critical brand materials.
+SECTION 05
+Typography
+
+
+Our type system uses geometric sans-serifs that read modern and premium. No serifs — they fight the futuristic positioning.
+
+
+
+Type scale
+Hero / display: 48–72px. Page title: 32–40px. Section heading: 24–28px. Subheading: 18–20px. Body: 16px. Caption / small: 12–14px.
+
+Typography rules
+Always use sentence case for headers — only capitalize the first word and proper nouns. Maintain generous line height (1.5–1.7 for body, 1.1–1.3 for display). Never use more than two weights on a single page. Letter spacing on uppercase labels: 0.05–0.1em.
+SECTION 06
+Voice & tone
+
+
+The Pronova voice is conversational, direct, and unapologetically real. We talk like smart people explaining things to other smart people — no corporate padding, no buzzword bingo.
+
+Conversational principle
+Write like you're explaining something to a smart friend over coffee. Be direct without being stiff. Be specific without being academic.
+
+
+Em-dashes for asides
+Use em-dashes liberally to insert thoughts, clarifications, or commentary mid-sentence. This creates a natural speaking rhythm that feels human.
+Examples: "We build the entire pipeline — from first click to closed deal." ... "Your potential customers are searching right now — and if you're not on page one, they're finding your competitors instead."
+
+Colorful vocabulary
+Use specific, vivid words instead of generic ones. This is where personality comes through.
+
+
+Authentic about challenges
+Don't pretend everything is easy or perfect. Acknowledging difficulties builds credibility and distinguishes us from every other agency blowing smoke.
+
+SECTION 07
+Writing rules
+
+
+
+SECTION 08
+Words & phrases to avoid
+
+
+These phrases signal AI-generated or generic marketing content. Using them undermines the authenticity that defines our brand.
+
+
+SECTION 09
+Content guidelines by format
+
+
+Website copy
+Lead with the problem, not the solution. Use specific numbers and results, not vague claims. Keep paragraphs under four sentences. Every page needs a clear call to action. Lead with capability, not geography — "based in Texas" reads better than "Brownsville TX company" when pitching premium work.
+Proposals
+Match formality to the client — government RFPs need more structure than startup pitches. Front-load the value proposition. Be specific about deliverables, timelines, and pricing. Include process details so clients know how we work. Always use the current Pronova brand system, never legacy materials.
+Sales copy
+Lead with the problem. Use specific numbers from real client results. Include case studies when possible. Avoid hype words — let the results speak for themselves. The goal is to inform and persuade, not to pressure.
+Blog posts
+Personal narrative is fine — share experiences and lessons learned. Use subheadings to break up long content. Include specific details (names, places, numbers) rather than vague descriptions. End with actionable takeaways, not generic conclusions.
+Social media
+Keep the same voice, compressed. No hashtag spam — three max per post. Share work in progress and behind-the-scenes content. Respond to comments within two hours during business hours. Never use emojis in professional posts.
+SECTION 10
+Quality checklist
+
+
+Before publishing any content under the Pronova brand, verify every item:
+
+
+SECTION 11
+Application examples
+
+
+The following examples demonstrate how brand elements combine across different contexts.
+
+WEBSITE HERO SECTION
+
+
+PROPOSAL COVER
+
+
+SOCIAL MEDIA POST
+"Just wrapped a 20-page site build for a housing authority — from discovery to deployment in four weeks. The best part? Their team can update everything themselves through the CMS we built. That's the goal every time: hand over something your team can actually run without calling us."
+Notice: conversational tone, em-dash aside, specific detail (20 pages, four weeks), no emojis, no hype words.

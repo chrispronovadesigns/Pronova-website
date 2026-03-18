@@ -1,69 +1,122 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import CTABanner from '@/components/sections/CTABanner.astro';
+import ServiceLayout from '@/layouts/ServiceLayout.astro';
 
-const features = [
-  { icon: '🍎', title: 'iOS App Development', desc: 'Native Swift and SwiftUI apps for iPhone and iPad with App Store deployment.' },
-  { icon: '🤖', title: 'Android App Development', desc: 'Native Kotlin apps optimized for the full Android ecosystem.' },
-  { icon: '⚛️', title: 'Cross-Platform (React Native)', desc: 'One codebase, both platforms — faster delivery without sacrificing quality.' },
-  { icon: '🌐', title: 'Web App Development', desc: 'Progressive web apps and full-stack solutions with React, Next.js, and Node.js.' },
-  { icon: '🔗', title: 'API & Backend Development', desc: 'Robust REST and GraphQL APIs, cloud infrastructure, and database design.' },
-  { icon: '☁️', title: 'Cloud & DevOps', desc: 'AWS, Firebase, and CI/CD pipelines that keep your app fast, secure, and scalable.' },
+const phases = [
+  { num: '01', title: 'Discovery and planning', duration: 'Weeks 1-2', desc: 'We map out your entire workflow — not just what the app should do, but why. Deliverables include a detailed requirements document, system architecture plan, user flow diagrams, and wireframes for every screen.' },
+  { num: '02', title: 'Design', duration: 'Weeks 2-3', desc: 'We design every screen, every interaction, every edge case. You get an interactive prototype you can click through on your phone. Feedback rounds until you are genuinely happy — not just fine with it.' },
+  { num: '03', title: 'Development', duration: 'Weeks 3-10', desc: 'Front-end and back-end built simultaneously. You get a staging environment you can log into at any time. Bi-weekly demos where we walk you through what has been built. No black box.' },
+  { num: '04', title: 'Testing and optimization', duration: 'Weeks 10-13', desc: 'Real users test the app. We find and fix issues. Performance optimization so the app loads fast and handles edge cases under load.' },
+  { num: '05', title: 'Launch and deployment', duration: 'Weeks 13-16', desc: 'We deploy to iOS App Store, Google Play, and the web. We handle submission requirements, review processes, and configuration. Training session for your team.' },
 ];
 
-const techStack = ['React Native', 'React', 'Next.js', 'Node.js', 'GraphQL', 'AWS', 'Firebase', 'Swift', 'Kotlin', 'MongoDB', 'PostgreSQL'];
+const tiers = [
+  { name: 'MVP', price: '$15,000 - $25,000', timeline: '6 to 8 weeks', screens: '5 to 10 screens', platform: 'Single-platform', desc: 'Prove the concept before you go all-in. Basic market research, wireframing, UI/UX design, development, testing, app store submission, and one month of post-launch support.', best: 'First-time app builders, businesses testing a new service concept, or startups needing a working prototype for investor conversations.' },
+  { name: 'Alpha', price: '$25,000 - $50,000', timeline: '8 to 12 weeks', screens: '10 to 20 screens', platform: 'Dual-platform (iOS + Android)', desc: 'The real product for a real market. Advanced features like user authentication, push notifications, payment processing, and third-party integrations. Two months of post-launch support.', best: 'Businesses with a validated concept ready for market. Companies replacing manual processes with a digital system.' },
+  { name: 'Beta', price: '$50,000 - $100,000+', timeline: '12 to 16 weeks', screens: '20+ screens', platform: 'Multi-platform (iOS, Android, web)', desc: 'Enterprise-grade software built for scale. Complex features like geo-location tracking, real-time data, advanced security, admin dashboards, and multi-role user systems. Three months of post-launch support.', best: 'Businesses with complex operational needs. Companies managing field teams, logistics, or multi-location operations.' },
+];
+
+const techStack = ['React Native', 'Node.js', 'AWS', 'Google Cloud', 'React', 'Next.js', 'GraphQL', 'PostgreSQL', 'MongoDB', 'Firebase'];
 ---
 
-<BaseLayout
-  title="App Development Services | Pronova Designs"
-  description="Custom mobile and web app development in Texas. iOS, Android, and cross-platform apps built by experienced developers in Brownsville, TX."
+<ServiceLayout
+  title="App development | Pronova"
+  description="Custom mobile and web app development from concept to deployment. iOS, Android, and cross-platform apps built with a structured process that keeps your budget and timeline in focus."
+  badge="App development"
+  heading="You have an app idea. What you don't have is a way to build it without burning "
+  headingHighlight="$200K."
+  subheading="We take your idea — or your operational headache — and turn it into a custom app that works on day one. Structured process, milestone-based payments, no disappearing acts."
+  ctaHeading="Let's talk about your project"
+  ctaSubheading="Every app project starts with a conversation — not a contract. We'll talk through your idea, your workflow, your budget reality, and what's actually feasible."
 >
-  <!-- Hero -->
-  <section class="section pt-32 relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+  <!-- The Problem -->
+  <section class="section">
     <div class="container max-w-4xl mx-auto">
-      <a href="/services/" class="text-brand-muted text-sm hover:text-brand-accent transition-colors inline-flex items-center gap-1 mb-8">
-        ← All Services
-      </a>
-      <span class="badge mb-4">App Development</span>
-      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6">
-        Custom Apps That <span class="gradient-text">Move Your Business Forward</span>
-      </h1>
-      <p class="text-brand-muted text-lg leading-relaxed max-w-2xl mb-8">
-        We craft bespoke mobile and web applications that combine cutting-edge technology,
-        elegant design, and strategic business insight. Whether you need an iOS app, an Android
-        app, or a full-stack web application — we build it right.
-      </p>
-      <div class="flex flex-wrap gap-4">
-        <a href="/contact/" class="btn-primary">Start Your App Project</a>
-        <a href="/portfolio/" class="btn-secondary">View App Portfolio</a>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-6">Why most app projects fail</h2>
+      <div class="text-brand-muted leading-relaxed space-y-4">
+        <p>It is not usually a technology problem. It is a communication problem.</p>
+        <p>Most developers jump straight to building. They take a spec document, disappear into a code cave for three months, and come back with something that technically matches the requirements but does not actually work the way your business operates. By that point, you have already paid 50-70% of the budget.</p>
+        <p class="text-brand-text font-medium">Vague requirements lead to wrong assumptions. Wrong assumptions lead to features nobody asked for and missing ones everybody needed. Misalignment gets discovered late — after the money is spent.</p>
+        <p>The fix is not better code — it is a better process that keeps you in the loop at every stage so nothing gets built that does not match what you actually need.</p>
       </div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="section">
-    <div class="container">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold font-heading mb-4">Full-Spectrum App Development</h2>
-        <p class="text-brand-muted max-w-xl mx-auto">From mobile-first to enterprise web applications — we cover the full stack.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((f) => (
-          <div class="card">
-            <div class="text-3xl mb-3">{f.icon}</div>
-            <h3 class="font-semibold text-lg font-heading mb-2">{f.title}</h3>
-            <p class="text-brand-muted text-sm leading-relaxed">{f.desc}</p>
+  <!-- Process -->
+  <section class="section bg-brand-secondary/50">
+    <div class="container max-w-4xl mx-auto">
+      <span class="badge mb-4">Our process</span>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">How we build apps differently</h2>
+      <p class="text-brand-muted leading-relaxed mb-12">Our process is designed around one principle: <strong class="text-brand-text">you should never be surprised by what you are paying for.</strong></p>
+
+      <div class="space-y-8">
+        {phases.map((phase) => (
+          <div class="card flex gap-6">
+            <div class="shrink-0">
+              <span class="text-2xl font-bold gradient-text font-heading">{phase.num}</span>
+            </div>
+            <div>
+              <div class="flex items-center gap-3 mb-2">
+                <h3 class="font-semibold text-lg font-heading">{phase.title}</h3>
+                <span class="badge-purple text-xs">{phase.duration}</span>
+              </div>
+              <p class="text-brand-muted text-sm leading-relaxed">{phase.desc}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Tech Stack -->
+  <!-- Pricing Tiers -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="badge mb-4">Investment</span>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">What you get at each level</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {tiers.map((tier) => (
+          <div class="card flex flex-col">
+            <h3 class="text-xl font-bold font-heading mb-1">{tier.name}</h3>
+            <p class="text-2xl font-bold gradient-text mb-4">{tier.price}</p>
+            <div class="space-y-2 mb-4">
+              <p class="text-brand-muted text-sm"><strong class="text-brand-text">Timeline:</strong> {tier.timeline}</p>
+              <p class="text-brand-muted text-sm"><strong class="text-brand-text">Scope:</strong> {tier.screens}, {tier.platform}</p>
+            </div>
+            <p class="text-brand-muted text-sm leading-relaxed mb-4">{tier.desc}</p>
+            <p class="text-brand-muted text-xs mt-auto pt-4 border-t border-brand-border"><strong class="text-brand-text">Best for:</strong> {tier.best}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Structure -->
   <section class="section-sm bg-brand-secondary/50">
+    <div class="container max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold font-heading mb-6">Payment structure</h2>
+      <p class="text-brand-muted mb-6">Payments are tied to milestones — you pay as you see progress, and each payment is only due when you have reviewed and approved the work from that phase.</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {[
+          { pct: '10%', label: 'Initial deposit' },
+          { pct: '35%', label: 'Front-end milestone' },
+          { pct: '35%', label: 'Back-end milestone' },
+          { pct: '20%', label: 'Project completion' },
+        ].map((m) => (
+          <div class="card text-center">
+            <p class="text-2xl font-bold gradient-text">{m.pct}</p>
+            <p class="text-brand-muted text-xs mt-1">{m.label}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-brand-muted text-sm mt-6"><strong class="text-brand-text">Post-launch maintenance:</strong> $1,000/month covers server hosting, bug fixes, security updates, and minor feature adjustments. Month-to-month — cancel anytime.</p>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="section-sm">
     <div class="container text-center">
-      <p class="text-brand-muted text-sm uppercase tracking-wider font-semibold mb-6">Technologies We Use</p>
+      <p class="text-brand-muted text-sm uppercase tracking-[0.08em] font-semibold mb-6">Technologies we build with</p>
       <div class="flex flex-wrap justify-center gap-3">
         {techStack.map((tech) => (
           <span class="px-4 py-2 rounded-lg bg-brand-primary border border-brand-border text-brand-text text-sm font-medium">
@@ -71,13 +124,25 @@ const techStack = ['React Native', 'React', 'Next.js', 'Node.js', 'GraphQL', 'AW
           </span>
         ))}
       </div>
+      <p class="text-brand-muted text-sm mt-6 max-w-xl mx-auto">We build with technologies that have huge communities, proven track records, and long futures. Nothing experimental that might leave you stranded in two years.</p>
     </div>
   </section>
 
-  <CTABanner
-    heading="Ready to Build Your App?"
-    subheading="Get a free consultation and project estimate from our team."
-    primaryCTA={{ label: 'Get a Free Consultation', href: '/contact/' }}
-    secondaryCTA={{ label: 'View Our Work', href: '/portfolio/' }}
-  />
-</BaseLayout>
+  <!-- Case Study -->
+  <section class="section bg-brand-secondary/50">
+    <div class="container max-w-4xl mx-auto">
+      <span class="badge mb-4">Case study</span>
+      <h2 class="text-3xl font-bold font-heading mb-6">Hexatronic — field technician management app</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="font-semibold text-brand-text mb-2">The problem</h3>
+          <p class="text-brand-muted text-sm leading-relaxed">Hexatronic needed to track field technicians across multiple job sites in real time. Their existing process was a patchwork of phone calls, spreadsheets, and manual check-ins. Dispatchers could not see who was where, and the whole operation was bleeding efficiency.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-brand-text mb-2">What we built</h3>
+          <p class="text-brand-muted text-sm leading-relaxed">A multi-platform mobile and web application with real-time geo-location tracking, two-factor authentication, an admin dashboard for dispatchers, and a CMS for updating job details. Full deployment across all platforms in 16 weeks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>

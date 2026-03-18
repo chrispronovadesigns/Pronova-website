@@ -1,0 +1,48 @@
+---
+// Example: FAQ Page with SEO Schema
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { buildFAQSchema } from '@/lib/seo/schema';
+
+const faqs = [
+  {
+    question: 'How long does it take to build a mobile app?',
+    answer: 'Typical mobile app development takes 3-6 months depending on complexity. We follow an agile process with regular updates and milestones every 2 weeks.',
+  },
+  {
+    question: 'Do you offer ongoing maintenance and support?',
+    answer: 'Yes, we offer comprehensive maintenance packages including bug fixes, updates, hosting, and feature enhancements. Plans start at $500/month.',
+  },
+  {
+    question: 'What technologies do you use?',
+    answer: 'We use modern, proven technologies including React Native, Flutter, Node.js, Python, and cloud platforms like AWS and Google Cloud.',
+  },
+];
+
+const faqSchema = buildFAQSchema(faqs);
+---
+
+<BaseLayout
+  title="Frequently Asked Questions"
+  description="Common questions about our services, pricing, and development process. Get answers to your questions about working with Pronova."
+  schemas={[faqSchema]}
+>
+  <div class="section">
+    <div class="container max-w-4xl">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Frequently asked questions
+      </h1>
+      <p class="text-xl text-brand-muted mb-12">
+        Everything you need to know about our services
+      </p>
+      
+      <div class="space-y-8">
+        {faqs.map((faq) => (
+          <div class="card">
+            <h2 class="text-2xl font-bold mb-4">{faq.question}</h2>
+            <p class="text-brand-muted">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

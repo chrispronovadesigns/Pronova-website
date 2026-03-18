@@ -12,23 +12,22 @@ try {
   allPosts = [];
 }
 
-const categories = ['All', 'Productivity', 'Wellness', 'Mindfulness', 'Tech'];
+const categories = ['All', 'SEO', 'Marketing', 'Development', 'Business'];
 ---
 
 <BaseLayout
-  title="Digital Nomad Blog | Pronova Designs"
-  description="The Pronova Designs Digital Nomad Blog — insights on productivity, wellness, mindfulness, and tech for location-independent professionals."
+  title="Blog | Pronova"
+  description="Insights on SEO, digital marketing, app development, and business growth from the Pronova team."
 >
   <section class="section pt-32">
     <div class="container">
       <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="badge mb-4">Digital Nomad Blog</span>
+        <span class="badge mb-4">Blog</span>
         <h1 class="text-4xl md:text-5xl font-bold font-heading mb-4">
-          Live Better. <span class="gradient-text">Work Smarter.</span>
+          Insights from the <span class="gradient-text">Pronova team</span>
         </h1>
         <p class="text-brand-muted text-lg leading-relaxed">
-          Insights on productivity, wellness, mindfulness, and tech for the modern
-          location-independent professional.
+          Practical thinking on SEO, digital marketing, app development, and building a business that actually grows.
         </p>
       </div>
 
@@ -67,8 +66,8 @@ const categories = ['All', 'Productivity', 'Wellness', 'Mindfulness', 'Tech'];
         </div>
       ) : (
         <div class="text-center py-24 card max-w-md mx-auto">
-          <p class="text-4xl mb-4">✍️</p>
-          <h2 class="font-semibold font-heading mb-2">Articles Coming Soon</h2>
+          <p class="text-4xl font-bold gradient-text mb-4">...</p>
+          <h2 class="font-semibold font-heading mb-2">Articles coming soon</h2>
           <p class="text-brand-muted text-sm mb-6">
             We're porting our blog content from WordPress. Drop your <code class="text-brand-accent">.mdx</code> files into
             <code class="text-brand-accent">src/content/blog/</code> and they'll appear here automatically.

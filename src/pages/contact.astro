@@ -3,70 +3,77 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const contactMethods = [
   {
-    icon: '📧',
-    label: 'Email Us',
-    value: 'hello@pronovadesigns.com',
-    href: 'mailto:hello@pronovadesigns.com',
+    label: 'Email',
+    value: 'chris@pronovadesigns.com',
+    href: 'mailto:chris@pronovadesigns.com',
   },
   {
-    icon: '📞',
-    label: 'Call Us',
-    value: '+1 (956) 000-0000',
-    href: 'tel:+19560000000',
+    label: 'Phone',
+    value: '(956) 254-0043',
+    href: 'tel:9562540043',
   },
   {
-    icon: '📍',
     label: 'Location',
-    value: 'Brownsville, TX',
-    href: 'https://maps.google.com/?q=Brownsville,TX',
+    value: '704 Paredes Line Rd, Brownsville, TX 78521',
+    href: 'https://maps.app.goo.gl/SAviVsAxBc4f2NmD6',
   },
 ];
 ---
 
 <BaseLayout
-  title="Contact Pronova Designs"
-  description="Get in touch with Pronova Designs for a free consultation. We help businesses in Brownsville, TX and beyond build custom digital solutions."
+  title="Contact | Pronova"
+  description="Get in touch with Pronova for a free consultation. We help businesses build custom digital solutions — apps, websites, and marketing systems."
 >
   <section class="section pt-32">
     <div class="container max-w-6xl mx-auto">
       <!-- Header -->
       <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="badge mb-4">Contact Us</span>
+        <span class="badge mb-4">Contact</span>
         <h1 class="text-4xl md:text-5xl font-bold font-heading mb-4">
-          Let's Take Your Business to the <span class="gradient-text">Next Level</span>
+          Every project starts with a <span class="gradient-text">conversation</span>
         </h1>
         <p class="text-brand-muted text-lg">
-          Tell us about your project and we'll get back to you with a free consultation.
+          Tell us about your project and we will get back to you with a free consultation. No pitch, no obligation.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
         <!-- Form -->
         <div class="lg:col-span-3 card">
-          <h2 class="font-semibold text-xl font-heading mb-6">Send Us a Message</h2>
+          <h2 class="font-semibold text-xl font-heading mb-6">Send us a message</h2>
           <form
             name="contact"
             method="POST"
             action="/contact/success/"
             class="space-y-5"
+            data-netlify="true"
+            data-netlify-honeypot="_gotcha"
           >
+            <!-- Honeypot field — hidden from real users, traps bots -->
+            <div class="absolute opacity-0 top-0 left-0 h-0 w-0 -z-10 overflow-hidden" aria-hidden="true">
+              <label>Do not fill this out
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+              </label>
+            </div>
+            <!-- Anti-spam timestamp -->
+            <input type="hidden" name="_form_loaded" value="" />
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-medium text-brand-muted mb-1.5" for="first-name">First Name</label>
-                <input type="text" id="first-name" name="first_name" class="input" placeholder="John" required />
+                <input type="text" id="first-name" name="first_name" class="input" placeholder="John" required maxlength="100" autocomplete="given-name" />
               </div>
               <div>
                 <label class="block text-sm font-medium text-brand-muted mb-1.5" for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="last_name" class="input" placeholder="Doe" required />
+                <input type="text" id="last-name" name="last_name" class="input" placeholder="Doe" required maxlength="100" autocomplete="family-name" />
               </div>
             </div>
             <div>
               <label class="block text-sm font-medium text-brand-muted mb-1.5" for="email">Email Address</label>
-              <input type="email" id="email" name="email" class="input" placeholder="john@company.com" required />
+              <input type="email" id="email" name="email" class="input" placeholder="john@company.com" required maxlength="254" autocomplete="email" />
             </div>
             <div>
               <label class="block text-sm font-medium text-brand-muted mb-1.5" for="phone">Phone (optional)</label>
-              <input type="tel" id="phone" name="phone" class="input" placeholder="+1 (555) 000-0000" />
+              <input type="tel" id="phone" name="phone" class="input" placeholder="+1 (555) 000-0000" maxlength="20" autocomplete="tel" />
             </div>
             <div>
               <label class="block text-sm font-medium text-brand-muted mb-1.5" for="service">Service Interested In</label>
@@ -95,7 +102,7 @@ const contactMethods = [
             </div>
             <div>
               <label class="block text-sm font-medium text-brand-muted mb-1.5" for="message">Tell Us About Your Project</label>
-              <textarea id="message" name="message" rows="4" class="textarea" placeholder="Describe your project goals, timeline, and any details that would help us understand your needs..." required></textarea>
+              <textarea id="message" name="message" rows="4" class="textarea" placeholder="Describe your project goals, timeline, and any details that would help us understand your needs..." required maxlength="5000"></textarea>
             </div>
             <button type="submit" class="btn-primary w-full justify-center text-base py-3.5">
               Send Message
@@ -109,10 +116,10 @@ const contactMethods = [
         <!-- Contact Info -->
         <div class="lg:col-span-2 space-y-6">
           <div class="card space-y-6">
-            <h2 class="font-semibold text-xl font-heading">Get in Touch</h2>
+            <h2 class="font-semibold text-xl font-heading">Get in touch</h2>
             {contactMethods.map((method) => (
-              <a href={method.href} class="flex items-start gap-4 group" target={method.href.startsWith('http') ? '_blank' : undefined}>
-                <span class="text-2xl shrink-0">{method.icon}</span>
+              <a href={method.href} class="flex items-start gap-4 group" target={method.href.startsWith('http') ? '_blank' : undefined} rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+                <span class="shrink-0 mt-1 w-5 h-5 rounded-full bg-brand-accent/20 flex items-center justify-center"><span class="w-2 h-2 rounded-full bg-brand-accent"></span></span>
                 <div>
                   <p class="text-brand-muted text-xs font-medium uppercase tracking-wider mb-0.5">{method.label}</p>
                   <p class="text-brand-text font-medium group-hover:text-brand-accent transition-colors">{method.value}</p>
@@ -122,7 +129,7 @@ const contactMethods = [
           </div>
 
           <div class="card">
-            <h3 class="font-semibold font-heading mb-3">Free Consultation Includes</h3>
+            <h3 class="font-semibold font-heading mb-3">Free consultation includes</h3>
             <ul class="space-y-2.5">
               {[
                 'Project scope review',
@@ -150,3 +157,10 @@ const contactMethods = [
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const formLoaded = document.querySelector<HTMLInputElement>('input[name="_form_loaded"]');
+  if (formLoaded) {
+    formLoaded.value = Date.now().toString();
+  }
+</script>

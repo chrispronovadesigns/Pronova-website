@@ -1,57 +1,128 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import CTABanner from '@/components/sections/CTABanner.astro';
+import ServiceLayout from '@/layouts/ServiceLayout.astro';
 
-const services = [
-  { icon: '🔍', title: 'SEO', href: '#seo', desc: 'Rank higher and drive organic traffic with technical SEO, content strategy, and link building.' },
-  { icon: '📍', title: 'Local SEO', href: '#local-seo', desc: 'Dominate local search results and Google Maps for your target area.' },
-  { icon: '📋', title: 'SEO Audit', href: '#seo-audit', desc: 'Deep-dive analysis of your current SEO performance with a prioritized action plan.' },
-  { icon: '📱', title: 'Social Media Marketing', href: '#smm', desc: 'Strategic content and community management across all major platforms.' },
-  { icon: '📧', title: 'Email Marketing', href: '#email', desc: 'Automated drip campaigns and newsletters that nurture leads and retain customers.' },
-  { icon: '💸', title: 'Paid Advertising', href: '#paid-ads', desc: 'Google Ads, Meta Ads, and more — ROI-focused campaigns that convert.' },
-  { icon: '🎬', title: 'Video Marketing', href: '#video', desc: 'Engaging video content that tells your brand story and drives action.' },
+const pipeline = [
+  { phase: 'Get found', desc: 'Technical SEO across all 200+ ranking factors. Paid ads with positive ROI from month one. Local map pack domination. Content that ranks and converts. Plus optimization for AI search engines like ChatGPT and Google AI overviews.' },
+  { phase: 'Capture everything', desc: 'Conversion-optimized landing pages. Lead capture at every touchpoint. Retargeting that keeps your brand in front of people who visited but did not convert. Form optimization, click-to-call tracking, and chat integrations.' },
+  { phase: 'Convert to cash flow', desc: 'SMS campaigns with 98% open rates. Email automation that nurtures and sells. Review generation on autopilot. Social proof amplification. Everything tracked, everything measurable, everything tied to actual revenue.' },
+];
+
+const included = [
+  'Search engine optimization',
+  'Google and social media ads',
+  'Email and SMS campaigns',
+  'Social media management',
+  'Content creation and optimization',
+  'AI and voice search optimization',
+  'Conversion tracking and analytics',
+  'Monthly strategy calls',
+];
+
+const tiers = [
+  { name: 'Growth', price: '$2,500 - $4,000/mo', desc: 'Core SEO and local optimization. Google Ads management. Email and SMS setup and automation. Monthly strategy calls and reporting.', best: 'Single-location businesses ready to build a real digital presence.' },
+  { name: 'Scale', price: '$4,000 - $7,500/mo', desc: 'Advanced SEO with full content strategy. Multi-platform paid advertising. Complete email and SMS automation. Bi-weekly optimization and weekly reporting.', best: 'Growing businesses in competitive markets or multi-location operations.' },
+  { name: 'Enterprise', price: '$7,500 - $10,000/mo', desc: 'Full-spectrum digital marketing across all channels. Unlimited campaigns. Advanced automation and AI optimization. Dedicated account management with daily monitoring.', best: 'Established businesses with aggressive growth targets.' },
+];
+
+const caseStudies = [
+  { client: 'Rosas Medical Clinic', location: 'McAllen, TX', result: '2,847 new patient leads in six months. $847K revenue increase. Page one for 30+ medical keywords.' },
+  { client: 'Elan Wurtzel Law', location: 'Brownsville, TX', result: 'Page one in 72 days for competitive legal keywords. 127 new cases from digital channels in the first year.' },
+  { client: 'Beachwalk Properties', location: 'South Padre Island, TX', result: '18% email conversion rate. $2.3 million in tracked sales. Database of over 4,000 qualified buyer contacts.' },
 ];
 ---
 
-<BaseLayout
-  title="Digital Marketing Services | Pronova Designs"
-  description="Full-funnel digital marketing — SEO, local SEO, social media, email, paid ads, and video marketing services from Pronova Designs in Brownsville, TX."
+<ServiceLayout
+  title="Digital marketing | Pronova"
+  description="Full-pipeline digital marketing — SEO, paid ads, email, SMS — that turns search traffic into paying customers. Month-to-month, no long-term contracts."
+  badge="Digital marketing"
+  heading="Your customers are searching right now — and they are finding your "
+  headingHighlight="competitors."
+  subheading="92% of people never scroll past page one of Google. We build the entire marketing pipeline — from the moment someone types a search to the moment they become a paying customer."
+  ctaHeading="Start with a free marketing audit"
+  ctaSubheading="Ranking gap analysis, competitor intelligence, and a 90-day roadmap. Worth $1,500. Yours free. No strings attached."
 >
-  <section class="section pt-32 relative overflow-hidden">
-    <div class="absolute top-0 left-0 w-96 h-96 bg-brand-highlight/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+  <!-- The Problem -->
+  <section class="section">
     <div class="container max-w-4xl mx-auto">
-      <a href="/services/" class="text-brand-muted text-sm hover:text-brand-accent transition-colors inline-flex items-center gap-1 mb-8">← All Services</a>
-      <span class="badge mb-4">Digital Marketing</span>
-      <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6">
-        Marketing That <span class="gradient-text">Actually Converts</span>
-      </h1>
-      <p class="text-brand-muted text-lg leading-relaxed max-w-2xl mb-8">
-        Full-funnel digital marketing strategies across SEO, social media, email, paid advertising,
-        and video — designed to grow your audience, generate leads, and drive revenue.
-      </p>
-      <div class="flex flex-wrap gap-4">
-        <a href="/contact/" class="btn-primary">Get Your Marketing Plan</a>
-        <a href="/products/digital-marketing-playbook/" class="btn-secondary">Get the Playbook</a>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-6">Why the usual fixes do not work</h2>
+      <div class="text-brand-muted leading-relaxed space-y-4">
+        <p>The issue is not the tactics. <strong class="text-brand-text">It is the lack of integration.</strong></p>
+        <p>SEO alone takes months. Ads alone drain your budget without a proper landing page. Email blasts alone hit inboxes that are not primed to buy. Every piece needs the others to work — and when they do not talk to each other, you are just throwing money at disconnected experiments.</p>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((s) => (
-          <div class="card" id={s.href.replace('#', '')}>
-            <div class="text-3xl mb-3">{s.icon}</div>
-            <h3 class="font-semibold text-lg font-heading mb-2">{s.title}</h3>
-            <p class="text-brand-muted text-sm leading-relaxed">{s.desc}</p>
+  <!-- Pipeline -->
+  <section class="section bg-brand-secondary/50">
+    <div class="container max-w-4xl mx-auto">
+      <span class="badge mb-4">The full pipeline</span>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-12">How we fix it</h2>
+      <div class="space-y-8">
+        {pipeline.map((p, i) => (
+          <div class="card flex gap-6">
+            <div class="shrink-0">
+              <span class="text-2xl font-bold gradient-text font-heading">0{i + 1}</span>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg font-heading mb-2">{p.phase}</h3>
+              <p class="text-brand-muted text-sm leading-relaxed">{p.desc}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <CTABanner
-    heading="Ready to Grow Your Digital Presence?"
-    subheading="Get a free marketing audit and strategy session."
-  />
-</BaseLayout>
+  <!-- What's Included -->
+  <section class="section">
+    <div class="container max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold font-heading mb-6">What is included in every engagement</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {included.map((item) => (
+          <div class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-brand-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+            <span class="text-brand-muted text-sm">{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section bg-brand-secondary/50">
+    <div class="container">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="badge mb-4">Investment</span>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Most clients invest $3,000 to $4,500/month and see positive ROI by month three</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {tiers.map((tier) => (
+          <div class="card flex flex-col">
+            <h3 class="text-xl font-bold font-heading mb-1">{tier.name}</h3>
+            <p class="text-2xl font-bold gradient-text mb-4">{tier.price}</p>
+            <p class="text-brand-muted text-sm leading-relaxed mb-4">{tier.desc}</p>
+            <p class="text-brand-muted text-xs mt-auto pt-4 border-t border-brand-border"><strong class="text-brand-text">Best for:</strong> {tier.best}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-brand-muted text-sm text-center mt-6">Every tier includes analytics and month-to-month flexibility. No long-term contracts.</p>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section class="section">
+    <div class="container">
+      <span class="badge mb-4">Real results</span>
+      <h2 class="text-3xl font-bold font-heading mb-8">The numbers that matter</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {caseStudies.map((cs) => (
+          <div class="card">
+            <h3 class="font-semibold font-heading mb-1">{cs.client}</h3>
+            <p class="text-brand-muted text-xs mb-3">{cs.location}</p>
+            <p class="text-brand-muted text-sm leading-relaxed">{cs.result}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</ServiceLayout>
