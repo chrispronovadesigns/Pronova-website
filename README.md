@@ -227,4 +227,4 @@ Private — All rights reserved by Pronova Designs.
 
 ---
 
-Built with ⚡ by [Pronova](https://pronovadesigns.com)
+Built with Astro and TinaCMS by [Pronova](https://pronovadesigns.com)
