@@ -1,0 +1,304 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+import { buildServiceSchema, buildFAQSchema, buildBreadcrumbSchema } from '@/lib/seo/schema';
+
+const services = [
+  {
+    title: 'Technology Strategy & Roadmapping',
+    desc: 'Aligning your technical decisions with your business goals. Not a 40-page document that collects dust — a living roadmap you actually execute against.',
+  },
+  {
+    title: 'Architecture & Infrastructure Decisions',
+    desc: 'Choosing the right stack, the right platforms, and the right build-vs-buy tradeoffs before you are locked in. This is where bad decisions get expensive fast.',
+  },
+  {
+    title: 'Development Team Oversight',
+    desc: 'Whether you have in-house developers, freelancers, or an outsourced team — someone needs to evaluate their work, set standards, and hold them accountable. That is this.',
+  },
+  {
+    title: 'Vendor & Tool Evaluation',
+    desc: 'SaaS sprawl is real. I evaluate what you are paying for, what you actually need, and where you are getting gouged or underutilizing.',
+  },
+  {
+    title: 'Technical Due Diligence',
+    desc: 'Raising a round? Acquiring a company? Evaluating a partnership? I provide the technical assessment that protects your investment.',
+  },
+  {
+    title: 'AI & Automation Strategy',
+    desc: 'Not AI for the sake of AI. Practical, high-ROI automation — identifying where LLMs, agentic systems, and intelligent workflows can eliminate bottlenecks and reduce operational cost.',
+  },
+];
+
+const steps = [
+  {
+    num: '01',
+    title: 'Strategy Call',
+    desc: 'We talk about where your business is, where it is going, and where technology is helping or hurting. Free. No pitch deck. Just an honest conversation.',
+  },
+  {
+    num: '02',
+    title: 'Technical Assessment',
+    desc: 'I audit your current technology landscape — stack, infrastructure, team, vendors, technical debt, security posture. You get a clear-eyed view of where you stand.',
+  },
+  {
+    num: '03',
+    title: 'Ongoing Engagement',
+    desc: 'Monthly retainer. Defined scope. Regular check-ins. I am embedded in your team workflow — Slack, standups, architecture reviews, whatever the rhythm needs to be.',
+  },
+  {
+    num: '04',
+    title: 'Execution Support',
+    desc: 'Need something built, not just planned? Pronova Studio can execute on development, and Pronova Intelligence can deploy AI systems — all under the same roof. Strategy and execution, no handoff gap.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'How many hours per month does a Fractional CTO typically work?',
+    answer: 'Most engagements range from 10–20 hours per month, depending on the complexity of your technical landscape and how active your development cycle is. Some clients need more during critical phases like product launches or fundraising — the engagement flexes to fit.',
+  },
+  {
+    question: 'How is this different from hiring a technical consultant?',
+    answer: 'Consultants diagnose and leave. A Fractional CTO stays embedded in your operations — attending standups, reviewing pull requests, interviewing developer candidates, sitting in on vendor calls. It is ongoing leadership, not a one-time report.',
+  },
+  {
+    question: 'Can you also handle the development work?',
+    answer: 'Yes. Pronova Studio handles full-stack web and mobile app development, and Pronova Intelligence builds AI systems and automation. If something needs to be built — not just planned — we can execute it without bringing in a separate vendor.',
+  },
+  {
+    question: 'What industries do you work with?',
+    answer: 'I have worked across SaaS, professional services, construction, healthcare, legal, e-commerce, and real estate. The common thread is companies where technology is a growth lever, not just a cost center.',
+  },
+  {
+    question: 'Do you work with companies outside of Texas?',
+    answer: 'Absolutely. The engagement is async-first and remote-native. I work with companies across the US.',
+  },
+  {
+    question: 'What if I already have a dev team?',
+    answer: 'Even better. A big part of the Fractional CTO role is making your existing team more effective — setting code standards, reviewing architecture decisions, unblocking bottlenecks, and making sure what is being built aligns with the business roadmap.',
+  },
+];
+
+const stats = [
+  { value: '$250K–$400K+', label: 'Average full-time CTO salary per year' },
+  { value: '4–6 mo', label: 'Average time to hire a CTO' },
+  { value: '6–18 mo', label: 'Cost of a bad architecture decision in rework' },
+  { value: '$0', label: 'Cost of a strategy call with Pronova' },
+];
+
+const differentiators = [
+  {
+    title: 'Full-stack technical depth',
+    desc: 'Web apps, mobile apps, cloud infrastructure, databases, APIs, DevOps, AI/ML — I am not delegating your architecture review to a junior analyst.',
+  },
+  {
+    title: 'AI-native operator',
+    desc: 'I do not just advise on AI strategy — I build and deploy AI systems, MCP servers, and agentic workflows. This is not theoretical knowledge.',
+  },
+  {
+    title: 'Direct access, always',
+    desc: 'No account managers. No layers. You work with me directly — async-first, responsive, and embedded in your decision-making process.',
+  },
+  {
+    title: 'Product-builder mindset',
+    desc: 'I think like a product owner, not a services vendor. Every technical recommendation is filtered through "does this move the business forward?"',
+  },
+  {
+    title: 'No lock-in',
+    desc: 'Month-to-month engagement. I earn the seat at the table every 30 days.',
+  },
+];
+
+const serviceSchema = buildServiceSchema({
+  name: 'Fractional CTO Services',
+  description: 'Senior-level technology leadership on your terms. Architecture, strategy, team oversight, and execution guidance — without a full-time salary.',
+  serviceType: 'Fractional CTO',
+});
+
+const faqSchema = buildFAQSchema(faqs);
+
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Fractional CTO' },
+]);
+---
+
+<BaseLayout
+  title="Fractional CTO Services | Pronova — Technology Leadership Without the Full-Time Cost"
+  description="Senior-level technology leadership on your terms. Pronova's Fractional CTO service gives startups and growing businesses a hands-on technical co-pilot — architecture, strategy, team oversight, and execution guidance — without a $300K salary."
+  keywords={['fractional cto', 'fractional cto services', 'part-time cto', 'startup cto', 'technical leadership', 'technology strategy', 'cto for hire', 'outsourced cto']}
+  schemas={[serviceSchema, faqSchema, breadcrumbSchema]}
+>
+  <!-- Hero -->
+  <Hero
+    badge="Fractional CTO"
+    heading="Your Business Needs a CTO. It Doesn't Need a "
+    headingHighlight="$300K Salary."
+    subheading="Fractional CTO services for startups and growing companies that need senior technical leadership — without the overhead, the equity dilution, or the 6-month executive search."
+    primaryCTA={{ label: 'Schedule a Strategy Call', href: '/contact/' }}
+    secondaryCTA={{ label: 'See how it works', href: '#how-it-works' }}
+    showStats={false}
+  />
+
+  <!-- The Problem -->
+  <section class="section">
+    <div class="container max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-6">You're Making Technical Decisions That Will Cost You Later</h2>
+      <div class="text-brand-muted leading-relaxed space-y-4 mb-8">
+        <p>Every growing company hits the same wall. You are investing real money in technology — apps, platforms, infrastructure, vendor contracts — but no one at the table has the technical depth to call the shots with confidence.</p>
+        <p>So what happens?</p>
+      </div>
+      <ul class="space-y-4 mb-8">
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-brand-magenta mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" /></svg>
+          <span class="text-brand-muted">Developers build what's easy, not what's right</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-brand-magenta mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" /></svg>
+          <span class="text-brand-muted">You're three vendors deep with no integration strategy</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-brand-magenta mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" /></svg>
+          <span class="text-brand-muted">Technical debt is piling up and you don't even know it yet</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-brand-magenta mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" /></svg>
+          <span class="text-brand-muted">Every "quick fix" is creating the next emergency</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-brand-magenta mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" /></svg>
+          <span class="text-brand-muted">You can't evaluate whether your dev team is underperforming or overcommitting</span>
+        </li>
+      </ul>
+      <p class="text-brand-text font-medium leading-relaxed">You don't need more code. You need someone who's built this before telling you where the landmines are — <strong class="gradient-text">before you step on them.</strong></p>
+    </div>
+  </section>
+
+  <!-- What a Fractional CTO Does -->
+  <section class="section bg-brand-secondary/50">
+    <div class="container max-w-4xl mx-auto">
+      <span class="badge mb-4">What a Fractional CTO actually does</span>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">A CTO in Your Corner — Not on Your Payroll</h2>
+      <p class="text-brand-muted leading-relaxed mb-12">A Fractional CTO is a senior technology executive who works with your company part-time, typically 10–20 hours per month. You get the strategic firepower of a seasoned technical leader at a fraction of the cost of a full-time hire.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {services.map((s, i) => (
+          <div class="card flex gap-4">
+            <span class="text-lg font-bold gradient-text font-heading shrink-0">0{i + 1}</span>
+            <div>
+              <h3 class="font-semibold font-heading mb-1">{s.title}</h3>
+              <p class="text-brand-muted text-sm leading-relaxed">{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who This Is For -->
+  <section class="section">
+    <div class="container max-w-4xl mx-auto">
+      <span class="badge mb-4">Who this is for</span>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-12">Built for Companies at an Inflection Point</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="card p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-accent/10 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.841m2.699-2.278l.003-.003" /></svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-3">Funded Startups</h3>
+          <p class="text-brand-muted text-sm leading-relaxed">You've raised capital. You're building your first real product. Your investors expect technical rigor, but you're not ready to burn $25K+/month on a full-time CTO. You need someone who's shipped products, scaled infrastructure, and knows when to say "not yet" to a feature request.</p>
+        </div>
+        <div class="card p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-highlight/10 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-highlight" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-3">Growing Businesses Hitting a Technical Wall</h3>
+          <p class="text-brand-muted text-sm leading-relaxed">Revenue is up. Operations are getting complex. Your website was fine at $500K — it's breaking at $2M. Your tools don't talk to each other. Your "IT guy" is out of his depth. You need a technical strategist who understands both the business side and the engineering side.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Pronova -->
+  <section class="section bg-brand-secondary/50">
+    <div class="container max-w-4xl mx-auto">
+      <span class="badge mb-4">Why Pronova</span>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Not a Consultant. A Technical Co-Pilot.</h2>
+      <p class="text-brand-muted leading-relaxed mb-12">Most fractional CTOs come from big-company backgrounds. They'll write you a strategy deck and hand it off. I come from the builder side — I've architected and shipped production applications, managed dev teams, designed data pipelines, deployed AI systems, and run the infrastructure underneath all of it.</p>
+      <div class="space-y-4">
+        {differentiators.map((d) => (
+          <div class="card flex items-start gap-4">
+            <svg class="w-5 h-5 text-brand-highlight mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+            <div>
+              <h3 class="font-semibold font-heading mb-1">{d.title}</h3>
+              <p class="text-brand-muted text-sm leading-relaxed">{d.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="section">
+    <div class="container max-w-4xl mx-auto">
+      <span class="badge mb-4">How it works</span>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-12">Simple. Focused. No Bureaucracy.</h2>
+      <div class="space-y-6">
+        {steps.map((step) => (
+          <div class="card flex gap-6 items-start">
+            <span class="text-3xl font-bold gradient-text font-heading shrink-0">{step.num}</span>
+            <div>
+              <h3 class="text-lg font-semibold font-heading mb-2">{step.title}</h3>
+              <p class="text-brand-muted text-sm leading-relaxed">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Indicators / Stats -->
+  <section class="section bg-brand-secondary/50">
+    <div class="container max-w-4xl mx-auto text-center">
+      <span class="badge mb-4">The numbers behind the decision</span>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-12">Why Companies Choose Fractional</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {stats.map((stat) => (
+          <div class="card p-6 text-center">
+            <p class="text-2xl md:text-3xl font-bold gradient-text font-heading mb-2">{stat.value}</p>
+            <p class="text-brand-muted text-xs md:text-sm">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container max-w-4xl mx-auto">
+      <span class="badge mb-4">FAQ</span>
+      <h2 class="text-3xl md:text-4xl font-bold font-heading mb-12">Common Questions</h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="card group">
+            <summary class="flex items-center justify-between cursor-pointer font-semibold font-heading text-brand-text">
+              {faq.question}
+              <svg class="w-5 h-5 text-brand-muted shrink-0 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+            </summary>
+            <p class="text-brand-muted text-sm leading-relaxed mt-4">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <CTABanner
+    heading="Let's Figure Out if This Makes Sense"
+    subheading="No pitch. No pressure. Just a straightforward conversation about where your technology stands and whether a Fractional CTO is the right move for your business right now."
+    primaryCTA={{ label: 'Schedule a Strategy Call', href: '/contact/' }}
+    secondaryCTA={{ label: 'Free 30-minute call — no commitment', href: '/contact/' }}
+  />
+</BaseLayout>
